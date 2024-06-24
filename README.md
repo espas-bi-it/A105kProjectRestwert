@@ -16,8 +16,9 @@ Projekt Restwert Zürich needed a tool to register new customers and maintain th
 ## Installation
 
 Since it's a simple setup and Projekt Restwert Zürich is limited in their admin rights, we opted to use XAMPP.
-
 Install XAMPP and drag-and-drop the contents of the folder into the htdoc. Start the APACHE and mySql process.
+
+**Setup for Laravel will follow.**
     
 ## Screenshots
 
@@ -33,4 +34,4 @@ This project is used by the following companies:
 
 
 ## 🛠 Skills
-PHP, HTML, CSS, APACHE, MYSQL
+PHP, Laravel, Bootstrap, HTML, CSS, APACHE, MYSQL, Tinker
