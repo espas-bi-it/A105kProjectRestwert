@@ -11,6 +11,7 @@ Projekt Restwert Zürich needed a tool to register new customers and maintain th
 - Access to databank and ability to perform changes to entries (currently limited to "Incorporated true/false")
 - Filter and search options
 - Responsive
+- Only logged in users can view the DB
 
 
 ## Installation
@@ -21,8 +22,10 @@ Install XAMPP and drag-and-drop the contents of the folder into the htdoc. Start
     
 ## Screenshots
 
-![App Screenshot](https://i.postimg.cc/9FZHmJzH/form.png)
-![App Screenshot](https://i.postimg.cc/tgCgnLVx/DB.png)
+![App Screenshot](https://i.postimg.cc/YCZdGjXN/restwert-form.png)
+![App Screenshot](https://i.postimg.cc/BZKwx5W8/restwert-db.png)
+![App Screenshot](https://i.postimg.cc/W1ysd6L9/restwert-login.png)
+
 
 
 ## Used By
