@@ -1,13 +1,7 @@
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
         <ul class="navbar-nav mr-auto">
-            <a class="navbar-brand align-middle h5" href="{{ url('customers') }}">Home</a>
-            <a class="navbar-brand align-middle h5" href="{{ url('customers/create') }}">Neuen Eintrag erstellen</a>
-        </ul>
-    </nav>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <ul class="navbar-nav mr-auto">
-            <form method="GET" class="form-inline my-2 my-lg-0 p-1">
-                <select class="form-control mr-sm-2" name="sort" id="sort" onchange="changeButtonText()">
+            <form method="GET" class="form-inline my-2 my-lg-0 p-1 ">
+                <select class="form-control mr-sm-2  pr-5" name="sort" id="sort" onchange="changeButtonText()">
                     <option selected disabled>Bitte auswählen</option>
                     <option value="incorporated">Eingetragen</option>
                     <option value="name">Vorname</option>
