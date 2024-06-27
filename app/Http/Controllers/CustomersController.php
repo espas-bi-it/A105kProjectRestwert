@@ -3,17 +3,31 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
-
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class CustomersController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $customers = Customer::all();
+        if ($request->search_input == "") {
+            $customers = Customer::orderBy('created_at', 'DESC')->paginate(10)->withQueryString();
+        } else {
+
+            $customers = Customer::where('name', 'LIKE', "%$request->search_input%")->orWhere('surname', 'LIKE', "%$request->search_input%")->orWhere('address', 'LIKE', "%$request->search_input%")->orWhere('zip', 'LIKE', "%$request->search_input%")->orWhere('city', 'LIKE', "%$request->search_input%")->orWhere('email', 'LIKE', "%$request->search_input%")->paginate(10)->withQueryString();
+        }
+        if ($request->sort != "") {
+
+            if ($request->sort == "incorporated") {
+                $customers = Customer::where('incorporated', 'LIKE', "0")->paginate(10)->withQueryString();
+
+            } else {
+                $customers = Customer::orderBy($request->sort, 'DESC')->paginate(10)->withQueryString();
+            }
+        }
         return view('customers.index', ['customers' => $customers]);
     }
 
@@ -40,8 +54,8 @@ class CustomersController extends Controller
             'po_box' => '',
             'zip' => 'required',
             'city' => 'required',
-            'email' => 'required',
-            'phone' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required|regex:/(0)[0-9]{9}/',
             'iban' => 'required',
             'bankname' => 'required',
             'alt_title' => '',
@@ -88,11 +102,35 @@ class CustomersController extends Controller
         $customer->alt_iban = $validatedData['alt_iban'];
         $customer->alt_bankname = $validatedData['alt_bankname'];
 
-        $customer->oral_suggestion = $validatedData['oral_suggestion'];
-        $customer->ricardo_suggestion = $validatedData['ricardo_suggestion'];
-        $customer->socialmedia_suggestion = $validatedData['socialmedia_suggestion'];
-        $customer->flyer_suggestion = $validatedData['flyer_suggestion'];
-        $customer->incorporated = $validatedData['incorporated'];
+        if (isset($validatedData['oral_suggestion'])) {
+            $customer->oral_suggestion = "Ja";
+        } else {
+            $customer->oral_suggestion = "Nein";
+        }
+
+        if (isset($validatedData['ricardo_suggestion'])) {
+            $customer->ricardo_suggestion = "Ja";
+        } else {
+            $customer->ricardo_suggestion = "Nein";
+        }
+
+        if (isset($validatedData['socialmedia_suggestion'])) {
+            $customer->socialmedia_suggestion = "Ja";
+        } else {
+            $customer->socialmedia_suggestion = "Nein";
+        }
+
+        if (isset($validatedData['flyer_suggestion'])) {
+            $customer->flyer_suggestion = "Ja";
+        } else {
+            $customer->flyer_suggestion = "Nein";
+        }
+
+        // $customer->oral_suggestion = $validatedData['oral_suggestion'];
+        // $customer->ricardo_suggestion = $validatedData['ricardo_suggestion'];
+        // $customer->socialmedia_suggestion = $validatedData['socialmedia_suggestion'];
+        // $customer->flyer_suggestion = $validatedData['flyer_suggestion'];
+        $customer->incorporated = "0";
 
 
         $customer->save();
@@ -131,8 +169,8 @@ class CustomersController extends Controller
             'po_box' => '',
             'zip' => 'required',
             'city' => 'required',
-            'email' => 'required',
-            'phone' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required|regex:/(0)[0-9]{9}/',
             'iban' => 'required',
             'bankname' => 'required',
             'alt_title' => '',

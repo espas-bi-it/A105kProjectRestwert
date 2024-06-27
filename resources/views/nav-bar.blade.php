@@ -1,17 +1,39 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="{{url('customers')}}">Home</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="{{url('customers/create')}}">Neuen Eintrag erstellen</a>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  </div>
-</nav>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <ul class="navbar-nav mr-auto">
+            <a class="navbar-brand align-middle h5" href="{{ url('customers') }}">Home</a>
+            <a class="navbar-brand align-middle h5" href="{{ url('customers/create') }}">Neuen Eintrag erstellen</a>
+        </ul>
+    </nav>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <ul class="navbar-nav mr-auto">
+            <form method="GET" class="form-inline my-2 my-lg-0 p-1">
+                <select class="form-control mr-sm-2" name="sort" id="sort" onchange="changeButtonText()">
+                    <option selected disabled>Bitte auswählen</option>
+                    <option value="incorporated">Eingetragen</option>
+                    <option value="name">Vorname</option>
+                    <option value="surname">Name</option>
+                    <option value="zip">PLZ</option>
+                </select>
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="filter-btn">Sortieren</button>
+            </form>
+        </ul>
+        <ul>
+            <form method="GET" class="form-inline my-2 my-lg-0" role="search">
+                <input class="form-control mr-sm-2" type="search" placeholder="Suchen"
+                    value="{{ isset($_GET['search_input']) ? $_GET['search_input'] : '' }}" aria-label="Search"
+                    name="search_input">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="search">Suchen</button>
+            </form>
+        </ul>
+    </nav>
+
+    <script>
+        function changeButtonText() {
+            var x = document.getElementById("sort").value;
+            if (x == "incorporated") {
+                document.getElementById("filter-btn").innerHTML = "Filtern";
+            } else {
+                document.getElementById("filter-btn").innerHTML = "Sortieren";
+            }
+        }
+    </script>

@@ -38,9 +38,7 @@ class CustomerFactory extends Factory
             'alt_email' => $this->faker->sentence($nbwords = 2, $variableNbWords = true),
             'alt_phone' => $this->faker->sentence($nbwords = 2, $variableNbWords = true),
             'alt_iban' => $this->faker->sentence($nbwords = 2, $variableNbWords = true),
-            'alt_bankname' => $this->faker->sentence($nbwords = 2, $variableNbWords = true),
-            'suggestions' => $this->faker->sentence($nbwords = 2, $variableNbWords = true),
-            'incorporated' => $this->faker->sentence($nbwords = 2, $variableNbWords = true)
+            'alt_bankname' => $this->faker->sentence($nbwords = 2, $variableNbWords = true)
         ];
     }
 }

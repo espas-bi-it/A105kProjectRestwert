@@ -1,11 +1,10 @@
 <?php
 
-use App\Http\Controllers\FormController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomersController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('customers/create');
 });
 
 Route::resource('/customers', CustomersController::class);
