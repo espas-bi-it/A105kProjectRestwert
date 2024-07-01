@@ -177,7 +177,7 @@
             </div>
 
             <div class="container mt-1 my-3">
-                <input class="btn" type="submit" value="Speichern"></input>
+                <input class="btn btn-primary" type="submit" value="Speichern"></input>
                 <button class="btn"> <a type="" href="{{ URL::previous() }}">Zurück</a></button>
             </div>
         </form>

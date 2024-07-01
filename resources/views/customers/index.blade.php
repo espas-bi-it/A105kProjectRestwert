@@ -27,7 +27,7 @@
                 <td class="align-middle">{{ $customer->email }} </td>
                 <td class="align-middle">{{ $customer->created_at }} </td>
                 <td class="align-middle"> 
-                    <button class="btn"> <a type="" href="{{ url('customers', ['id' => $customer->id]) }}">Eintrag
+                    <button class="btn btn-primary"> <a type="" href="{{ url('customers', ['id' => $customer->id]) }}">Eintrag
                             bearbeiten</a></button>
                 </td>
 

@@ -7,7 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="/bootstrap-4.0.0-dist/css/bootstrap.css" rel="stylesheet">
     <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <title>Restwert Zürich</title>
 </head>
 

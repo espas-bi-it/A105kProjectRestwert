@@ -1,5 +1,6 @@
 @extends('layout')
 @section('content')
+<script async src="https://www.google.com/recaptcha/api.js"></script>
     <div class="container">
 
         <form class ="entry-form" method="POST" action="/thankyou">
@@ -213,7 +214,8 @@
 
 
             </div>
-
+<!-- Google Recaptcha Widget-->
+<div class="g-recaptcha mt-4" data-sitekey={{config('services.recaptcha.key')}}></div>
             <input type="submit" class="btn btn-lg btn-primary" style="margin-top:10px;margin-bottom:10px"
                 value="Eintragen">
     </div>

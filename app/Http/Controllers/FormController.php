@@ -2,17 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SignUp;
 use Illuminate\Http\Request;
 use App\Models\Customer;
+use Illuminate\Support\Facades\Mail;
 
 
 class FormController extends Controller
 {
 
-     public function index(Request $request)
-     {
+    public function index(Request $request)
+    {
         return view('thankyou');
-     }
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -55,7 +58,8 @@ class FormController extends Controller
             'ricardo_suggestion' => '',
             'socialmedia_suggestion' => '',
             'flyer_suggestion' => '',
-            'incorporated' => ''
+            'incorporated' => '',
+            'g-recaptcha-response' => 'required'
         ]);
 
         $customer = new Customer();
@@ -108,15 +112,13 @@ class FormController extends Controller
             $customer->flyer_suggestion = "Nein";
         }
 
-        // $customer->oral_suggestion = $validatedData['oral_suggestion'];
-        // $customer->ricardo_suggestion = $validatedData['ricardo_suggestion'];
-        // $customer->socialmedia_suggestion = $validatedData['socialmedia_suggestion'];
-        // $customer->flyer_suggestion = $validatedData['flyer_suggestion'];
         $customer->incorporated = "0";
 
 
         $customer->save();
-        return redirect('thankyou');
 
+        Mail::to($customer->email)->send(new SignUp($customer));
+
+        return redirect('thankyou');
     }
 }
