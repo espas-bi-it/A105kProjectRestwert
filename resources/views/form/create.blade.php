@@ -11,7 +11,7 @@
 </script>
     <div class="container">
 
-        <form class ="entry-form" method="POST" action="/thankyou">
+        <form class ="entry-form" method="POST" action="/thankyou" onsubmit="return DisableButtonOnSubmit()">
 
             @csrf
             <div class="container">
@@ -227,8 +227,8 @@
             </div>
 <!-- Google Recaptcha Widget-->
     <div class="g-recaptcha mt-4" data-sitekey={{config('services.recaptcha.key')}}></div>
-            <input type="submit" class="btn btn-lg btn-primary" style="margin-top:10px;margin-bottom:10px"
-                value="Eintragen">
+            <button type="submit" id="submitBtn" class="btn btn-lg btn-primary" style="margin-top:10px;margin-bottom:10px"
+                value="Eintragen">Eintragen</button>
          <div> * Felder müssen ausgefüllt werden. </div>
 
     </div>
@@ -246,6 +246,17 @@
             } else {
                 text.style.display = "none";
             }
+        }
+
+        function DisableButtonOnSubmit() {
+            // Disable the submit button
+            document.getElementById('submitBtn').disabled = true;
+        
+            // Optionally, change the button text to indicate it's processing
+            document.getElementById('submitBtn').innerText= "Wird bearbeitet...";
+
+            // Return true to allow the form to be submitted
+            return true;
         }
     </script>
 
