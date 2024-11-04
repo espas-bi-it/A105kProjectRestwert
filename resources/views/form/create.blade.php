@@ -25,7 +25,7 @@
                 @endif
                 <div class="form-row">
                     <div class="col  my-1">
-                        <label for="title"> Anrede </label>
+                        <label for="title"> Anrede* </label>
                         <input name="title" class="form-control" id="title" value="{{ old('title') }}" required>
                     </div>
                     <div class="col  my-1">
@@ -35,18 +35,18 @@
 
                 <div class="form-row">
                     <div class="col  my-1">
-                        <label for="name"> Vorname</label>
+                        <label for="name"> Vorname*</label>
                         <input name="name" class="form-control" id="name" value="{{ old('name') }}" required>
                     </div>
                     <div class="col  my-1">
-                        <label for="surname"> Nachname</label>
+                        <label for="surname"> Nachname*</label>
                         <input name="surname" class="form-control" id="surname" value="{{ old('surname') }}" required>
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="col  my-1">
-                        <label for="address"> Adresse</label>
+                        <label for="address"> Adresse*</label>
                         <input name="address" class="form-control" id="address" value="{{ old('address') }}" required>
                     </div>
                     <div class="col  my-1">
@@ -57,33 +57,33 @@
 
                 <div class="form-row">
                     <div class="col  my-1">
-                        <label for="zip"> PLZ</label>
+                        <label for="zip"> PLZ*</label>
                         <input name="zip" class="form-control" id="zip" value="{{ old('zip') }}" required>
                     </div>
                     <div class="col  my-1">
-                        <label for="city"> Ort</label>
+                        <label for="city"> Ort*</label>
                         <input name="city" class="form-control" id="city" value="{{ old('city') }}" required>
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="col  my-1">
-                        <label for="email"> Email</label>
+                        <label for="email"> Email*</label>
                         <input name="email" class="form-control" id="email" value="{{ old('email') }}" required>
                     </div>
                     <div class="col  my-1">
-                        <label for="phone"> Telefon</label>
+                        <label for="phone"> Telefon*</label>
                         <input name="phone" class="form-control" id="phone" value="{{ old('phone') }}" required>
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="col  my-1">
-                        <label for="iban"> IBAN</label>
+                        <label for="iban"> IBAN*</label>
                         <input name="iban" class="form-control" id="iban" value="{{ old('iban') }}" required>
                     </div>
                     <div class="col  my-1">
-                        <label for="bankname"> Bankname</label>
+                        <label for="bankname"> Bankname*</label>
                         <input name="bankname" class="form-control" id="bankname" value="{{ old('bankname') }}" required>
                     </div>
                 </div>
@@ -200,7 +200,7 @@
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="gridCheck" required>
                         <label class="form-check-label" for="gridCheck">
-                            AGBs
+                            AGBs*
                         </label><br>
                         <span> Hiermit bestätigen Sie die Richtigkeit Ihrer Angaben und akzeptieren unsere AGB, welche Sie
                             nach
@@ -215,10 +215,13 @@
 
             </div>
 <!-- Google Recaptcha Widget-->
-<div class="g-recaptcha mt-4" data-sitekey={{config('services.recaptcha.key')}}></div>
+    <div class="g-recaptcha mt-4" data-sitekey={{config('services.recaptcha.key')}}></div>
             <input type="submit" class="btn btn-lg btn-primary" style="margin-top:10px;margin-bottom:10px"
                 value="Eintragen">
+         <div> * Felder müssen ausgefüllt werden. </div>
+
     </div>
+
 
 
     </form>
