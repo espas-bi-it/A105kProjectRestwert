@@ -1,6 +1,14 @@
 @extends('layout')
 @section('content')
 <script async src="https://www.google.com/recaptcha/api.js"></script>
+<script>
+    // Call HideInputFields on page load if alt_form_check is checked
+    window.onload = function() {
+        if (document.getElementById('alt_form_check').checked) {
+            HideInputFields();
+        }
+    };
+</script>
     <div class="container">
 
         <form class ="entry-form" method="POST" action="/thankyou">
@@ -23,6 +31,9 @@
                         @endforeach
                     </div>
                 @endif
+
+
+
                 <div class="form-row">
                     <div class="col  my-1">
                         <label for="title"> Anrede* </label>
@@ -92,7 +103,7 @@
                 <!-- Checkbox to toggle alternative data -->
                 <div class="form-check mt-3">
                     <input type="checkbox" class="form-check-input" id="alt_form_check" name="alt_form_check"
-                        onchange="HideInputFields()">
+                        onchange="HideInputFields()" {{ old('alt_form_check') ? 'checked' : '' }}>
                     <label class="form-check-label" for="alt_form_check">Alternative Daten </label>
                 </div>
 
@@ -175,22 +186,22 @@
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" name="oral_suggestion" id="oral_suggestion"
-                        value={{ old('oral_suggestion') ? 'Nein' : 'Ja' }}>
+                        value={{ old('oral_suggestion') ? 'Ja' : 'Nein' }} {{ old('oral_suggestion') == 'Nein' ? 'checked' : '' }}>
                     <label class="form-check-label" for="oral_suggestion"> Mündliche Empfehlung</label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" name="ricardo_suggestion" id="ricardo_suggestion"
-                        value={{ old('ricardo_suggestion') ? 'Nein' : 'Ja' }}>
+                        value={{ old('ricardo_suggestion') ? 'Ja' : 'Nein' }} {{ old('ricardo_suggestion') == 'Nein' ? 'checked' : '' }}>
                     <label class="form-check-label" for="ricardo_suggestion"> Ricardo</label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" name="socialmedia_suggestion"
-                        id="socialmedia_suggestion" value={{ old('socialmedia_suggestion') ? 'Nein' : 'Ja' }}>
+                        id="socialmedia_suggestion" value={{ old('socialmedia_suggestion') ? 'Ja' : 'Nein' }} {{ old('socialmedia_suggestion') == 'Nein' ? 'checked' : '' }}>
                     <label class="form-check-label" for="socialmedia_suggestion"> Social Media</label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" name="flyer_suggestion" id="flyer_suggestion"
-                        value={{ old('flyer_suggestion') ? 'Nein' : 'Ja' }}>
+                        value={{ old('flyer_suggestion') ? 'Ja' : 'Nein' }} {{ old('flyer_suggestion') == 'Nein' ? 'checked' : '' }}>
                     <label class="form-check-label" for="flyer_suggestion"> Flyer</label>
                 </div>
                 <hr>
