@@ -25,7 +25,7 @@
         <p class="main-content__body" data-lead-id="main-content-body">Vielen Dank für Ihre Zeit. <br>Sie werden
             demnächst eine Email mit den AGBs erhalten.</p>
     </div>
-
+    <button class="btn btn-outline-success my-2 my-sm-0" name="back"><a type="" href="/">Zurück zum Formular</button>
     <footer class="site-footer" id="footer">
         <p class="site-footer__fineprint" id="fineprint"></p>
     </footer>
