@@ -32,8 +32,6 @@
                     </div>
                 @endif
 
-
-
                 <div class="form-row">
                     <div class="col  my-1">
                         <label for="title"> Anrede* </label>

@@ -1,3 +1,6 @@
+
+
+
 @switch($data->title)
     @case('Frau')
         Sehr geehrte Frau {{ $data->name }} {{ $data->surname }}
@@ -21,10 +24,10 @@
     <strong>Projekt Restwert Zürich</strong><br>
     Naglerwiesenstrasse 4<br>
     8049 Zürich<br><br>
-    Telefon 043 344 23 47<br>
+    Telefon 043 311 58 25<br>
     E-Mail zuerich@projekt-restwert.ch
 </div>
 
 <div class="col-12 text-center">
-    <img class="logo" src="{{ asset('/image/logo.webp') }}">
+    <img src="{{ asset('image/logo.webp') }}" class="logo" alt="Logo">
 </div>
