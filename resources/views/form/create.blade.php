@@ -42,6 +42,8 @@
                         </select>
                     </div>
                     <div class="col  my-1">
+                        <label for="company"> Firma</label>
+                        <input name="company" class="form-control" id="company" value="{{ old('company') }}">
                     </div>
                 </div>
 
@@ -119,7 +121,9 @@
                             <option value="Herr">Herr</option>
                             </select>
                         </div>
-                        <div class="col  my-1">
+                        <div class="col  my-1" >
+                        <label for="alt_company"> Firma</label>
+                        <input name="alt_company" class="form-control" id="alt_company" value="{{ old('alt_company') }}">
 
                         </div>
                     </div>

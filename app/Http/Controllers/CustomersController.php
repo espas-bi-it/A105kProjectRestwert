@@ -48,6 +48,7 @@ class CustomersController extends Controller
         $customer = Customer::find($id);
         $validatedData = $request->validate([
             'title' => 'required|min:2',
+            'company' => '',
             'name' => 'required',
             'surname' => 'required',
             'address' => 'required',
@@ -59,6 +60,7 @@ class CustomersController extends Controller
             'iban' => 'required',
             'bankname' => 'required',
             'alt_title' => '',
+            'alt_company' => '',
             'alt_name' => '',
             'alt_surname' => '',
             'alt_address' => '',
@@ -77,6 +79,7 @@ class CustomersController extends Controller
         ]);
 
         $customer->title = $validatedData['title'];
+        $customer->company = $validatedData['company'];
         $customer->name = $validatedData['name'];
         $customer->surname = $validatedData['surname'];
         $customer->address = $validatedData['address'];
@@ -89,6 +92,7 @@ class CustomersController extends Controller
         $customer->bankname = $validatedData['bankname'];
 
         $customer->alt_title = $validatedData['alt_title'];
+        $customer->alt_company = $validatedData['alt_company'];
         $customer->alt_name = $validatedData['alt_name'];
         $customer->alt_surname = $validatedData['alt_surname'];
         $customer->alt_address = $validatedData['alt_address'];
