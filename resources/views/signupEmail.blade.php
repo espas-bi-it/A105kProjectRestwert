@@ -1,6 +1,4 @@
 
-
-
 @switch($data->title)
     @case('Frau')
         Sehr geehrte Frau {{ $data->name }} {{ $data->surname }}
@@ -15,7 +13,7 @@
 @endswitch
 
 <p> Vielen Dank für Ihre Anmeldung. Im Anhang der Email finden Sie die besprochenen AGBs. </p>
-<p> Sobald Ihr Produkt aufgeschalten wird, erhalten Sie eine Email mit den Angaben und einem Link.</p>
+<p> Sobald Ihr Produkt aufgeschalten wird, erhalten Sie eine Email mit den Angaben und dem Link zum Ricardo-Inserat.</p>
 <p> Wir danken Ihnen für Ihr Vertrauen und hoffen, Sie bald wieder zu sehen!</p>
 
 <p>Freundliche Grüsse </p>

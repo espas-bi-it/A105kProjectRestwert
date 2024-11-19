@@ -35,10 +35,13 @@
                 <div class="form-row">
                     <div class="col  my-1">
                         <label for="title"> Anrede* </label>
-                        <input name="title" class="form-control" id="title" value="{{ old('title') }}" required>
+                        <select name="title" class="form-control" id="title" value="{{ old('title') }}" required>
+                        <option value="" selected disabled>Bitte wählen</option>
+                        <option value="Frau">Frau</option>
+                        <option value="Herr">Herr</option>
+                        </select>
                     </div>
                     <div class="col  my-1">
-
                     </div>
                 </div>
 
@@ -109,8 +112,12 @@
                 <div class="alt_form mt-3" id="alt_form" style="display:none">
                     <div class="form-row">
                         <div class="col  my-1">
-                            <label for="alt_title"> Anrede </label>
-                            <input name="alt_title" class="form-control" id="alt_title" value="{{ old('title') }}">
+                            <label for="alt_title"> Anrede* </label>
+                            <select name="alt_title" class="form-control" id="alt_title" value="{{ old('alt_title') }}" required>
+                            <option value="" selected disabled>Bitte wählen</option>
+                            <option value="Frau">Frau</option>
+                            <option value="Herr">Herr</option>
+                            </select>
                         </div>
                         <div class="col  my-1">
 
