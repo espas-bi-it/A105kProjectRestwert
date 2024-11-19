@@ -122,8 +122,6 @@
                             </select>
                         </div>
                         <div class="col  my-1" >
-                        <label for="alt_company"> Firma</label>
-                        <input name="alt_company" class="form-control" id="alt_company" value="{{ old('alt_company') }}">
 
                         </div>
                     </div>
@@ -146,11 +144,7 @@
                             <input name="alt_address" class="form-control" id="alt_address"
                                 value="{{ old('alt_address') }}">
                         </div>
-                        <div class="col  my-1">
-                            <label for="alt_po_box"> Postfach</label>
-                            <input name="alt_po_box" class="form-control" id="alt_po_box"
-                                value="{{ old('alt_po_box') }}">
-                        </div>
+
                     </div>
 
                     <div class="form-row">
@@ -164,28 +158,7 @@
                         </div>
                     </div>
 
-                    <div class="form-row">
-                        <div class="col  my-1">
-                            <label for="alt_email"> Email</label>
-                            <input name="alt_email" class="form-control" id="alt_email" value="{{ old('alt_email') }}">
-                        </div>
-                        <div class="col  my-1">
-                            <label for="alt_phone"> Telefon</label>
-                            <input name="alt_phone" class="form-control" id="alt_phone" value="{{ old('alt_phone') }}">
-                        </div>
-                    </div>
 
-                    <div class="form-row">
-                        <div class="col  my-1">
-                            <label for="alt_iban"> IBAN</label>
-                            <input name="alt_iban" class="form-control" id="alt_iban" value="{{ old('alt_iban') }}">
-                        </div>
-                        <div class="col  my-1">
-                            <label for="alt_bankname"> Bankname</label>
-                            <input name="alt_bankname" class="form-control" id="alt_bankname"
-                                value="{{ old('alt_bankname') }}">
-                        </div>
-                    </div>
                 </div>
                 <hr>
                 </hr>
