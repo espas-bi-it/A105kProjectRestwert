@@ -36,7 +36,7 @@
                     <div class="col  my-1">
                         <label for="title"> Anrede* </label>
                         <select name="title" class="form-control" id="title" value="{{ old('title') }}" required>
-                        <option value="" selected disabled>Bitte wählen</option>
+                        <option value="" style="display:none" selected disabled>Bitte wählen</option>
                         <option value="Frau">Frau</option>
                         <option value="Herr">Herr</option>
                         </select>
@@ -114,9 +114,9 @@
                 <div class="alt_form mt-3" id="alt_form" style="display:none">
                     <div class="form-row">
                         <div class="col  my-1">
-                            <label for="alt_title"> Anrede* </label>
-                            <select name="alt_title" class="form-control" id="alt_title" value="{{ old('alt_title') }}" required>
-                            <option value="" selected disabled>Bitte wählen</option>
+                            <label for="alt_title"> Anrede </label>
+                            <select name="alt_title" class="form-control" id="alt_title" value="{{ old('alt_title') }}">
+                            <option value="" style="display:none" selected readonly="readonly">Bitte wählen</option>
                             <option value="Frau">Frau</option>
                             <option value="Herr">Herr</option>
                             </select>

@@ -16,10 +16,15 @@
                 <div class="form-row">
                     <div class="col">
                         <label for="title"> Anrede </label>
-                        <input name="title" class="form-control" value="{{ $customer->title }}" id="title"
-                            value="{{ old('title') }}" required>
+                        <select name="title" class="form-control" id="title" value="{{ $customer->title }}" required>
+                        <option value="Frau" {{ $customer->title == "Frau" ? 'selected' : '' }}>Frau</option>
+                        <option value="Herr" {{ $customer->title == "Herr" ? 'selected' : '' }}>Herr</option>
+                        </select>
+
                     </div>
                     <div class="col">
+                        <label for="company"> Firma</label>
+                        <input name="company" class="form-control" id="company" value="{{ $customer->company }}">
                     </div>
                 </div>
 
@@ -89,14 +94,17 @@
                 </div>
             </div>
             <br>
-            <div class="container">
+            <div class="container" id="alt_fields">
                 <h2> Alternative Daten</h2>
                 <div class="alt_form" id="alt_form">
                     <div class="form-row">
                         <div class="col">
                             <label for="alt_title"> Anrede </label>
-                            <input name="alt_title" class="form-control" value="{{ $customer->alt_title }}" id="alt_title"
-                                value="{{ old('title') }}">
+                            <select name="alt_title" class="form-control" id="title" value="{{ $customer->alt_title }}">
+                            <option style="display:none" value="" readonly="readonly"{{ $customer->alt_title == "" ? 'selected' : '' }}></option>
+                            <option value="Frau" {{ $customer->alt_title == "Frau" ? 'selected' : '' }}>Frau</option>
+                            <option value="Herr" {{ $customer->alt_title == "Herr" ? 'selected' : '' }}>Herr</option>
+                            </select>
                         </div>
                         <div class="col">
 
@@ -122,11 +130,6 @@
                             <input name="alt_address" class="form-control" value="{{ $customer->alt_address }}"
                                 id="alt_address" value="{{ old('alt_address') }}">
                         </div>
-                        <div class="col">
-                            <label for="alt_po_box"> Postfach</label>
-                            <input name="alt_po_box" class="form-control" value="{{ $customer->alt_po_box }}"
-                                id="alt_po_box" value="{{ old('alt_po_box') }}">
-                        </div>
                     </div>
 
                     <div class="form-row">
@@ -144,27 +147,19 @@
 
                     <div class="form-row">
                         <div class="col">
-                            <label for="alt_email"> Email</label>
-                            <input name="alt_email" class="form-control" value="{{ $customer->alt_email }}"
-                                id="alt_email" value="{{ old('alt_email') }}">
+
                         </div>
                         <div class="col">
-                            <label for="alt_phone"> Telefon</label>
-                            <input name="alt_phone" class="form-control" value="{{ $customer->alt_phone }}"
-                                id="alt_phone" value="{{ old('alt_phone') }}">
+
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="col">
-                            <label for="alt_iban"> IBAN</label>
-                            <input name="alt_iban" class="form-control" value="{{ $customer->alt_iban }}"
-                                id="alt_iban" value="{{ old('alt_iban') }}">
+
                         </div>
                         <div class="col">
-                            <label for="alt_bankname"> Bankname</label>
-                            <input name="alt_bankname" class="form-control" value="{{ $customer->alt_bankname }}"
-                                id="alt_bankname" value="{{ old('alt_bankname') }}">
+
                         </div>
                     </div>
 
@@ -175,6 +170,7 @@
                     </div>
                 </div>
             </div>
+
 
             <div class="container mt-1 my-3">
                 <input class="btn btn-primary" type="submit" value="Speichern"></input>
