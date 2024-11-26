@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use Nembie\IbanRule\ValidIban;
-
+use Illuminate\Support\Facades\Auth;
 
 class CustomersController extends Controller
 {
@@ -94,6 +94,9 @@ class CustomersController extends Controller
 
         // Update fields
         $customer->fill($validatedData);
+
+        // Get the currently logged-in user's name
+        $customer->updated_by = Auth::user()->name;
 
         // Check and set the incorporated field
         $customer->incorporated = $request->has('incorporated') ? "1" : "0";

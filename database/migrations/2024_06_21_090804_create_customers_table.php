@@ -40,6 +40,7 @@ return new class extends Migration
             $table->string('socialmedia_suggestion')->nullable();
             $table->string('flyer_suggestion')->nullable();
             $table->boolean('incorporated')->default(false);
+            $table->string('updated_by')->nullable();
             $table->timestamps();
         });
     }

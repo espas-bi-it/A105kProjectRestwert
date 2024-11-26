@@ -13,7 +13,7 @@ class Customer extends Model
         'title', 'company', 'name', 'surname', 'address', 'po_box', 'zip', 'city', 
         'email', 'phone', 'iban', 'bankname', 'alt_title', 'alt_name', 'alt_surname',
         'alt_address', 'alt_zip', 'alt_city', 'oral_suggestion', 'ricardo_suggestion', 
-        'socialmedia_suggestion', 'flyer_suggestion', 'incorporated'
+        'socialmedia_suggestion', 'flyer_suggestion', 'incorporated', 'updated_by',
     ];
 
     public function scopeSearch($query, $searchInput)

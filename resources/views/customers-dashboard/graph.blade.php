@@ -41,7 +41,12 @@
                     borderWidth: 1
                 }]
             },
-            options: {
+           options: {
+                plugins: {
+                    legend: {
+                        onClick: null, // Disable click events on legend items
+                    }
+                },
                 scales: {
                     y: {
                         beginAtZero: true
