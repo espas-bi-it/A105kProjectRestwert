@@ -3,7 +3,7 @@
         <ul class="navbar-nav mr-auto">
             <form method="GET" class="form-inline my-2 my-lg-0 p-1 ">
                 <select class="form-control mr-sm-2  pr-5" name="sort" id="sort" onchange="changeButtonText()">
-                    <option selected disabled>Bitte auswählen</option>
+                    <option selected disabled style="display:none">Bitte auswählen</option>
                     <option value="incorporated">Zum eintragen</option>
                     <option value="name">Vorname</option>
                     <option value="surname">Nachname</option>

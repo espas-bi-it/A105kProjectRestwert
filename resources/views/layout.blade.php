@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    @unless (request()->is('/') || request()->is('customers/*'))
+    @unless (request()->is('/') || request()->is('customers/*') || request()->is('graph'))
         @include('layouts.navigation')
         @include('sort-filter-settings')
     @endunless

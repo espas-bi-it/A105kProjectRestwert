@@ -19,6 +19,9 @@
                     <x-nav-link :href="url('/')">
                         Neuen Kunden eintragen
                     </x-nav-link>
+                    <x-nav-link :href="url('/graph')">
+                        Statistik
+                    </x-nav-link>
                 </div>
             </div>
 

@@ -43,6 +43,18 @@ class CustomersController extends Controller
         return view('customers-dashboard.show', compact('customer'));
     }
 
+    public function showSuggestionsGraph()
+    {
+        $suggestionsData = [
+            'Oral' => Customer::whereNotNull('oral_suggestion')->count(),
+            'Ricardo' => Customer::whereNotNull('ricardo_suggestion')->count(),
+            'Social Media' => Customer::whereNotNull('socialmedia_suggestion')->count(),
+            'Flyer' => Customer::whereNotNull('flyer_suggestion')->count(),
+        ];
+
+        return view('customers-dashboard.graph', compact('suggestionsData'));
+    }
+
     /**
      * Update the specified resource in storage.
      */
