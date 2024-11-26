@@ -12,12 +12,14 @@
 
 <body>
     @unless (request()->is('/') || request()->is('customers/*') || request()->is('graph'))
+    <div class="navbar-sticky-item">
         @include('layouts.navigation')
         @include('sort-filter-settings')
+    </div>
     @endunless
     @yield('content')
 
-    <div class="container fixed-static">
+    <div class="pagination-sticky-item" >
         @yield('pagination')
     </div>
 </body>

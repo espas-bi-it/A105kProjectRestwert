@@ -89,6 +89,21 @@ p {
   margin-bottom: 1rem;
 }
 
+.pagination-sticky-item {
+    position: sticky;
+    bottom: 0;
+    padding: 20px;
+    background: #f8f9fa;
+    border: solid 1px #d9d9d9;
+}
+
+.navbar-sticky-item {
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 1;
+}
+
 abbr[title],
 abbr[data-original-title] {
   text-decoration: underline;
