@@ -4,10 +4,10 @@
             <form method="GET" class="form-inline my-2 my-lg-0 p-1 ">
                 <select class="form-control mr-sm-2  pr-5" name="sort" id="sort" onchange="changeButtonText()">
                     <option selected disabled>Bitte auswählen</option>
-                    <option value="incorporated">Eingetragen</option>
+                    <option value="incorporated">Zum eintragen</option>
                     <option value="name">Vorname</option>
-                    <option value="surname">Name</option>
-                    <option value="zip">PLZ</option>
+                    <option value="surname">Nachname</option>
+                    <option value="city">Ort</option>
                 </select>
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="filter-btn">Sortieren</button>
             </form>

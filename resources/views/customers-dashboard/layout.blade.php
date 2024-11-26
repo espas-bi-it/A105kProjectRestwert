@@ -11,9 +11,6 @@
 
 <body>
     <div class="container">
-        @unless (request()->is('customers/create'))
-            @include('nav-bar')
-        @endunless
         @yield('content')
         <script src="/bootstrap-4.0.0-dist/js/bootstrap.js">
         </script>

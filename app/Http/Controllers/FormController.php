@@ -6,7 +6,7 @@ use App\Mail\SignUp;
 use Illuminate\Http\Request;
 use App\Models\Customer;
 use Illuminate\Support\Facades\Mail;
-
+use Nembie\IbanRule\ValidIban;
 
 class FormController extends Controller
 {
@@ -31,6 +31,10 @@ class FormController extends Controller
     {
         $customer = new Customer();
 
+        $request->merge([
+            'iban' => str_replace(' ', '', $request->iban),  // Remove spaces from IBAN
+        ]);
+
         $validatedData = $request->validate([
             'title' => 'required|min:2',
             'company' => '',
@@ -42,7 +46,7 @@ class FormController extends Controller
             'city' => 'required',
             'email' => 'required|email',
             'phone' => 'required|regex:/(0)[0-9]{9}/',
-            'iban' => 'required',
+            'iban' => ['required', 'string', new ValidIban],
             'bankname' => 'required',
             'alt_title' => '',
             'alt_name' => '',

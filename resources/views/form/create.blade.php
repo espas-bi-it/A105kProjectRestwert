@@ -37,8 +37,8 @@
                         <label for="title"> Anrede* </label>
                         <select name="title" class="form-control" id="title" value="{{ old('title') }}" required>
                         <option value="" style="display:none" selected disabled>Bitte wählen</option>
-                        <option value="Frau">Frau</option>
-                        <option value="Herr">Herr</option>
+                        <option value="Frau" {{ old('title') == "Frau" ? 'selected' : '' }} >Frau</option>
+                        <option value="Herr" {{ old('title') == "Herr" ? 'selected' : '' }}>Herr</option>
                         </select>
                     </div>
                     <div class="col  my-1">
@@ -117,8 +117,8 @@
                             <label for="alt_title"> Anrede </label>
                             <select name="alt_title" class="form-control" id="alt_title" value="{{ old('alt_title') }}">
                             <option value="" style="display:none" selected readonly="readonly">Bitte wählen</option>
-                            <option value="Frau">Frau</option>
-                            <option value="Herr">Herr</option>
+                            <option value="Frau" {{ old('alt_title') == "Frau" ? 'selected' : '' }} >Frau</option>
+                            <option value="Herr" {{ old('alt_title') == "Herr" ? 'selected' : '' }}>Herr</option>
                             </select>
                         </div>
                         <div class="col  my-1" >

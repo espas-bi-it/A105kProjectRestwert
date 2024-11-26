@@ -1,4 +1,5 @@
 @extends('layout')
+@include('layouts.navigation')
 @section('content')
     <div class="container">
         @if ($errors->any())
@@ -31,65 +32,55 @@
                 <div class="form-row">
                     <div class="col">
                         <label for="name"> Vorname</label>
-                        <input name="name" class="form-control" value="{{ $customer->name }}" id="name"
-                            value="{{ old('name') }}" required>
+                        <input name="name" class="form-control" value="{{ $customer->name }}" id="name" required>
                     </div>
                     <div class="col">
                         <label for="surname"> Nachname</label>
-                        <input name="surname" class="form-control" value="{{ $customer->surname }}" id="surname"
-                            value="{{ old('surname') }}" required>
+                        <input name="surname" class="form-control" value="{{ $customer->surname }}" id="surname" required>
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="col">
                         <label for="address"> Adresse</label>
-                        <input name="address" class="form-control" value="{{ $customer->address }}" id="address"
-                            value="{{ old('address') }}" required>
+                        <input name="address" class="form-control" value="{{ $customer->address }}" id="address" required>
                     </div>
                     <div class="col">
                         <label for="po_box"> Postfach</label>
-                        <input name="po_box" class="form-control" value="{{ $customer->po_box }}" id="po_box"
-                            value="{{ old('po_box') }}">
+                        <input name="po_box" class="form-control" value="{{ $customer->po_box }}" id="po_box">
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="col">
                         <label for="zip"> PLZ</label>
-                        <input name="zip" class="form-control" value="{{ $customer->zip }}" id="zip"
-                            value="{{ old('zip') }}" required>
+                        <input name="zip" class="form-control" value="{{ $customer->zip }}" id="zip" required>
                     </div>
                     <div class="col">
                         <label for="city"> Ort</label>
-                        <input name="city" class="form-control" value="{{ $customer->city }}" id="city"
-                            value="{{ old('city') }}" required>
+                        <input name="city" class="form-control" value="{{ $customer->city }}" id="city" required>
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="col">
                         <label for="email"> Email</label>
-                        <input name="email" class="form-control" value="{{ $customer->email }}" id="email"
-                            value="{{ old('email') }}" required>
+                        <input name="email" class="form-control" value="{{ $customer->email }}" id="email" required>
                     </div>
                     <div class="col">
                         <label for="phone"> Telefon</label>
-                        <input name="phone" class="form-control" value="{{ $customer->phone }}" id="phone"
-                            value="{{ old('phone') }}" required>
+                        <input name="phone" class="form-control" value="{{ $customer->phone }}" id="phone" required>
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="col">
                         <label for="iban"> IBAN</label>
-                        <input name="iban" class="form-control" value="{{ $customer->iban }}" id="iban"
-                            value="{{ old('iban') }}" required>
+                        <input name="iban" class="form-control" value="{{ $customer->iban }}" id="iban" required>
                     </div>
                     <div class="col">
                         <label for="bankname"> Bankname</label>
-                        <input name="bankname" class="form-control" value="{{ $customer->bankname }}" id="bankname"
-                            value="{{ old('bankname') }}" required>
+                        <input name="bankname" class="form-control" value="{{ $customer->bankname }}" id="bankname" required>
                     </div>
                 </div>
             </div>
@@ -102,6 +93,7 @@
                             <label for="alt_title"> Anrede </label>
                             <select name="alt_title" class="form-control" id="title" value="{{ $customer->alt_title }}">
                             <option style="display:none" value="" readonly="readonly"{{ $customer->alt_title == "" ? 'selected' : '' }}></option>
+                            <option value="" {{ $customer->alt_title == "" ? 'selected' : '' }}></option>
                             <option value="Frau" {{ $customer->alt_title == "Frau" ? 'selected' : '' }}>Frau</option>
                             <option value="Herr" {{ $customer->alt_title == "Herr" ? 'selected' : '' }}>Herr</option>
                             </select>
@@ -114,34 +106,29 @@
                     <div class="form-row">
                         <div class="col">
                             <label for="alt_name"> Vorname</label>
-                            <input name="alt_name" class="form-control" value="{{ $customer->alt_name }}"
-                                id="alt_name" value="{{ old('alt_name') }}">
+                            <input name="alt_name" class="form-control" value="{{ $customer->alt_name }}" id="alt_name">
                         </div>
                         <div class="col">
                             <label for="alt_surname"> Nachname</label>
-                            <input name="alt_surname" class="form-control" value="{{ $customer->alt_surname }}"
-                                id="alt_surname" value="{{ old('alt_surname') }}">
+                            <input name="alt_surname" class="form-control" value="{{ $customer->alt_surname }}" id="alt_surname">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="col">
                             <label for="alt_address"> Adresse</label>
-                            <input name="alt_address" class="form-control" value="{{ $customer->alt_address }}"
-                                id="alt_address" value="{{ old('alt_address') }}">
+                            <input name="alt_address" class="form-control" value="{{ $customer->alt_address }}" id="alt_address">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="col">
                             <label for="alt_zip"> PLZ</label>
-                            <input name="alt_zip" class="form-control" value="{{ $customer->alt_zip }}" id="alt_zip"
-                                value="{{ old('alt_zip') }}">
+                            <input name="alt_zip" class="form-control" value="{{ $customer->alt_zip }}" id="alt_zip">
                         </div>
                         <div class="col">
                             <label for="alt_city"> Ort</label>
-                            <input name="alt_city" class="form-control" value="{{ $customer->alt_city }}"
-                                id="alt_city" value="{{ old('alt_city') }}">
+                            <input name="alt_city" class="form-control" value="{{ $customer->alt_city }}" id="alt_city">
                         </div>
                     </div>
 

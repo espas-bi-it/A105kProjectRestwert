@@ -11,10 +11,9 @@
 </head>
 
 <body>
-
     @unless (request()->is('/') || request()->is('customers/*'))
         @include('layouts.navigation')
-        @include('nav-bar')
+        @include('sort-filter-settings')
     @endunless
     @yield('content')
 
