@@ -30,12 +30,14 @@
                     <td class="align-middle">
 
                         <!-- Edit Button -->
-                        <a href="{{ url('customers', ['id' => $customer->id]) }}" class="btn btn-primary" style="display:block">
-                            Eintrag bearbeiten
-                        </a>
+                        @if(Auth::check() && Auth::user()->role === 'TV' || Auth::check() && Auth::user()->role === 'Admin')
+                            <a href="{{ url('customers', ['id' => $customer->id]) }}" class="btn btn-primary" style="display:block">
+                                Eintrag bearbeiten
+                            </a>
+                        @endif
 
                         <!-- Delete Button -->
-                        @if(Auth::check() && Auth::user()->role === 'admin')
+                        @if(Auth::check() && Auth::user()->role === 'Admin')
                             <!-- Show admin content here -->
                             <form action="{{ url('customers', ['id' => $customer->id]) }}" method="POST" style="display:grid">
                                 @method('DELETE')
@@ -44,6 +46,12 @@
                                     Eintrag löschen
                                 </button>
                             </form>
+                        @endif
+                        <!-- Show Button -->
+                        @if(Auth::check() && Auth::user()->role === 'Benutzer')
+                            <a href="{{ url('customers', ['id' => $customer->id]) }}" class="btn btn-primary" style="display:block">
+                                Eintrag anzeigen
+                            </a>
                         @endif
                     </td>
                 </tr>
