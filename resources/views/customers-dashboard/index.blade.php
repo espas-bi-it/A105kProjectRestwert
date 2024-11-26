@@ -11,9 +11,8 @@
                 <th class="col-0">PLZ</th>
                 <th class="col-2">Ort</th>
                 <th class="col-2">Email</th>
-                <th class="col-2">Angemeldet am</th>
-                <th class="col-0"></th>
-                <th class="col-0"></th>
+                <th class="col-0">Datum</th>
+                <th class="col-1"></th>
             </tr>
         </thead>
         <tbody>
@@ -31,18 +30,20 @@
                     <td class="align-middle">
 
                         <!-- Edit Button -->
-                        <a href="{{ url('customers', ['id' => $customer->id]) }}" class="btn btn-primary">
+                        <a href="{{ url('customers', ['id' => $customer->id]) }}" class="btn btn-primary" style="display:block">
                             Eintrag bearbeiten
                         </a>
 
                         <!-- Delete Button -->
-                            <form action="{{ url('customers', ['id' => $customer->id]) }}" method="POST" style="display:inline-block;">
+                        @if(Auth::check() && Auth::user()->can('delete-customer', $customer))
+                            <form action="{{ url('customers', ['id' => $customer->id]) }}" method="POST" style="display:grid">
                                 @method('DELETE')
                                 @csrf
-                                <button type="submit" class="btn btn-danger">
+                                <button type="submit" class="btn btn-danger" style="display:block">
                                     Eintrag löschen
                                 </button>
                             </form>
+                        @endif
                     </td>
                 </tr>
             @endforeach
