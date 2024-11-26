@@ -35,7 +35,8 @@
                         </a>
 
                         <!-- Delete Button -->
-                        @if(Auth::check() && Auth::user()->can('delete-customer', $customer))
+                        @if(Auth::check() && Auth::user()->role === 'admin')
+                            <!-- Show admin content here -->
                             <form action="{{ url('customers', ['id' => $customer->id]) }}" method="POST" style="display:grid">
                                 @method('DELETE')
                                 @csrf
