@@ -10,9 +10,7 @@
     };
 </script>
     <div class="container">
-
-        <form class ="entry-form" method="POST" action="/thankyou" onsubmit="return DisableButtonOnSubmit()">
-
+        <form method="POST" action="/thankyou" onsubmit="return DisableButtonOnSubmit()">
             @csrf
             <div class="container">
                 <header class="masthead">

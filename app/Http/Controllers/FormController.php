@@ -13,7 +13,7 @@ class FormController extends Controller
 
     public function index(Request $request)
     {
-        return view('thankyou');
+        return view('form.thankyou');
     }
 
     /**

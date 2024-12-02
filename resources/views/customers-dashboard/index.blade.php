@@ -1,17 +1,20 @@
 @extends('layout')
 @section('content')
+    <div class="navbar-sticky-item">
+        @include('components.sort-filter-settings')
+    </div>
     <table class="table">
         <thead>
             <tr>
-                <th class="col-0">Eingetragen</th>
-                <th class="col-0">Anrede</th>
+                <th class="col-1">Eingetragen</th>
+                <th class="col-1">Anrede</th>
                 <th class="col-1">Vorname</th>
                 <th class="col-1">Nachname</th>
                 <th class="col-2">Adresse</th>
-                <th class="col-0">PLZ</th>
-                <th class="col-2">Ort</th>
+                <th class="col-1">PLZ</th>
+                <th class="col-1">Ort</th>
                 <th class="col-2">Email</th>
-                <th class="col-0">Datum</th>
+                <th class="col-2">Datum</th>
                 <th class="col-1"></th>
             </tr>
         </thead>
@@ -30,12 +33,9 @@
                     <td class="align-middle">
 
                         <!-- Edit Button -->
-                        @if(Auth::check() && Auth::user()->role === 'TV' || Auth::check() && Auth::user()->role === 'Admin')
-                            <a href="{{ url('customers', ['id' => $customer->id]) }}" class="btn btn-primary" style="display:block">
-                                Eintrag bearbeiten
-                            </a>
-                        @endif
-
+                        <a href="{{ url('customers', ['id' => $customer->id]) }}" class="btn btn-primary" style="display:block">
+                            Bearbeiten
+                        </a>
                         <!-- Delete Button -->
                         @if(Auth::check() && Auth::user()->role === 'Admin')
                             <!-- Show admin content here -->
@@ -43,16 +43,11 @@
                                 @method('DELETE')
                                 @csrf
                                 <button type="submit" class="btn btn-danger" style="display:block">
-                                    Eintrag löschen
+                                    Löschen
                                 </button>
                             </form>
                         @endif
-                        <!-- Show Button -->
-                        @if(Auth::check() && Auth::user()->role === 'Benutzer')
-                            <a href="{{ url('customers', ['id' => $customer->id]) }}" class="btn btn-primary" style="display:block">
-                                Eintrag anzeigen
-                            </a>
-                        @endif
+
                     </td>
                 </tr>
             @endforeach

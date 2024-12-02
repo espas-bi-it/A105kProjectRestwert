@@ -1,5 +1,4 @@
 @extends('layout')
-@include('layouts.navigation')
 @section('content')
 <!DOCTYPE html>
 <html>

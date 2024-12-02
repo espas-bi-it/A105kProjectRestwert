@@ -16,7 +16,9 @@
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
+            @unless(request()->is('/'))
             @include('layouts.navigation')
+            @endunless
 
             <!-- Page Heading -->
             @isset($header)

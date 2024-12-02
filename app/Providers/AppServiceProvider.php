@@ -24,11 +24,11 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useBootstrap();
 
         Blade::directive('readonlyForBenutzer', function () {
-            return "<?php echo Auth::user()->role == 'Benutzer' ? 'readonly' : ''; ?>";
+            return "<?php echo Auth::check() && Auth::user()->role === 'Teilnehmer' ? 'readonly' : ''; ?>";
             });
 
         Blade::directive('disabledForBenutzer', function () {
-            return "<?php echo Auth::user()->role == 'Benutzer' ? 'disabled'  : ''; ?>";
+            return "<?php echo Auth::check() && Auth::user()->role === 'Teilnehmer' ? 'disabled'  : ''; ?>";
             });
     }
 }
