@@ -1,6 +1,8 @@
 @extends('layout') <!-- Use your app's layout -->
-
 @section('content')
+<div class="navbar-sticky-item">
+    @include('components.sort-settings')
+</div>
 <div class="container">
     @if(session('success'))
         <div class="alert alert-success">
@@ -20,6 +22,7 @@
         </thead>
         <tbody>
             @foreach($users as $user)
+                @if ($user->email !== Auth::user()->email)
                 <tr>
                     <form id="updateUser-{{ $user->id }}" action="{{ route('users.update', $user) }}" method="POST">
                         @csrf
@@ -31,21 +34,12 @@
                         </td>
                         <td>
                         <div></div>
-                        @if ($user->email !== Auth::user()->email)
                             <select name="role" class="form-select">
                                 <option value="Admin" {{ $user->role === "Admin" ? 'selected' : '' }}>Admin</option>
                                 <option value="TV" {{ $user->role === "TV" ? 'selected' : '' }}>TV</option>
                                 <option value="Teilnehmer" {{ $user->role === "Teilnehmer" ? 'selected' : '' }}>Teilnehmer</option>
                             </select>
-                        @else
-                            <select name="role" class="form-select" disabled readonly>
-                                <option value="" selected>{{$user->role}}</option>
-                                <option value="" >Teilnehmer</option>
-
-                            </select>
-                        @endif
                         </td>
-                        @unless ($user->email === Auth::user()->email)
                         <td>
                             <!-- Make the button associate with the specific form -->
                             <button type="submit" form="updateUser-{{ $user->id }}" class="btn btn-primary">Update</button>
@@ -59,8 +53,9 @@
                                 </button>
                             </form>
                         </td>
-                    @endunless
                 </tr>
+                @endif
+
             @endforeach
         </tbody>
     </table>

@@ -25,7 +25,3 @@
     Telefon 043 311 58 25<br>
     E-Mail zuerich@projekt-restwert.ch
 </div>
-
-<div class="col-12 text-center">
-    <img src="{{ asset('image/logo.webp') }}" class="logo" alt="Logo">
-</div>

@@ -13,7 +13,7 @@
     <div class="container mt-3">
         <div class="form-row">
             <div class="col">
-                <label for="title"> Anrede </label>
+                <label for="title"> Anrede* </label>
                 <select name="title" class="form-control" id="title" value="{{ $customer->title }}" required @readonlyForBenutzer >
                 <option value="Frau" @disabledForBenutzer {{ $customer->title == "Frau" ? 'selected' : '' }} @disabledForBenutzer >Frau</option>
                 <option value="Herr" @disabledForBenutzer {{ $customer->title == "Herr" ? 'selected' : '' }}>Herr</option>
@@ -26,17 +26,17 @@
         </div>
         <div class="form-row">
             <div class="col">
-                <label for="name"> Vorname</label>
+                <label for="name"> Vorname*</label>
                 <input name="name" class="form-control" value="{{ $customer->name }}" id="name" required  @readonlyForBenutzer >
             </div>
             <div class="col">
-                <label for="surname"> Nachname</label>
+                <label for="surname"> Nachname*</label>
                 <input name="surname" class="form-control" value="{{ $customer->surname }}" id="surname" required @readonlyForBenutzer >
             </div>
         </div>
         <div class="form-row">
             <div class="col">
-                <label for="address"> Adresse</label>
+                <label for="address"> Adresse*</label>
                 <input name="address" class="form-control" value="{{ $customer->address }}" id="address" required @readonlyForBenutzer >
             </div>
             <div class="col">
@@ -46,38 +46,41 @@
         </div>
         <div class="form-row">
             <div class="col">
-                <label for="zip"> PLZ</label>
+                <label for="zip"> PLZ*</label>
                 <input name="zip" class="form-control" value="{{ $customer->zip }}" id="zip" required @readonlyForBenutzer >
             </div>
             <div class="col">
-                <label for="city"> Ort</label>
+                <label for="city"> Ort*</label>
                 <input name="city" class="form-control" value="{{ $customer->city }}" id="city" required @readonlyForBenutzer >
             </div>
         </div>
         <div class="form-row">
             <div class="col">
-                <label for="email"> Email</label>
+                <label for="email"> Email*</label>
                 <input name="email" class="form-control" value="{{ $customer->email }}" id="email" required @readonlyForBenutzer >
             </div>
             <div class="col">
-                <label for="phone"> Telefon</label>
+                <label for="phone"> Telefon*</label>
                 <input name="phone" class="form-control" value="{{ $customer->phone }}" id="phone" required @readonlyForBenutzer >
             </div>
         </div>
         <div class="form-row">
             <div class="col">
-                <label for="iban"> IBAN</label>
+                <label for="iban"> IBAN*</label>
                 <input name="iban" class="form-control" value="{{ $customer->iban }}" id="iban" required @readonlyForBenutzer >
             </div>
             <div class="col">
-                <label for="bankname"> Bankname</label>
+                <label for="bankname"> Bankname*</label>
                 <input name="bankname" class="form-control" value="{{ $customer->bankname }}" id="bankname" required @readonlyForBenutzer >
             </div>
         </div>
     </div>
     <br>
+
+    <hr class="m-3">
+    </hr>
+
     <div class="container" id="alt_fields">
-        <h2> Alternative Daten</h2>
         <div class="alt_form" id="alt_form">
             <div class="form-row">
                 <div class="col">

@@ -158,7 +158,7 @@
 
 
                 </div>
-                <hr>
+                <hr class="mt-3">
                 </hr>
 
                 <div class="mt-2">

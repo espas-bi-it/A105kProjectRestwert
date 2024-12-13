@@ -23,12 +23,23 @@ class UserManagementController extends Controller
     }
 
     // Show the list of users
-    public function index()
+    public function index(Request $request)
     {
         // Check permissions
         $this->authorize('create', User::class); // Optional if using Policies
 
-        $users = User::all(); // Get all users
+        // Validate inputs
+        $validated = $request->validate([
+            'search_input' => 'nullable|string|max:255',
+            'sort' => 'nullable|string|in:name,email,role',
+        ]);
+
+        // Build query using scopes
+        $users = User::query()
+            ->search($validated['search_input'] ?? null)
+            ->sort($validated['sort'] ?? null)
+            ->paginate(10)
+            ->withQueryString();
         return view('users.index', compact('users')); // Return view with users
     }
 
