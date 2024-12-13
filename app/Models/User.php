@@ -12,10 +12,10 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
 
     /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+    * The attributes that are mass assignable.
+    *
+    * @var array<int, string>
+    */
     protected $fillable = [
         'name',
         'email',
@@ -24,20 +24,20 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
+    * The attributes that should be hidden for serialization.
+    *
+    * @var array<int, string>
+    */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
     /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
+    * Get the attributes that should be cast.
+    *
+    * @return array<string, string>
+    */
     protected function casts(): array
     {
         return [
@@ -46,6 +46,14 @@ class User extends Authenticatable
         ];
     }
 
+    /**
+    * Search Function
+    *
+    * Only output list of users based on search input, which are sent by components.sort-settings
+    *
+    * @params   query
+    * @params   string
+    */
     public function scopeSearch($query, $searchInput)
     {
         if ($searchInput) {
@@ -57,6 +65,14 @@ class User extends Authenticatable
         }
     }
 
+    /**
+    * Sort Function
+    *
+    * Sorts list by defined sorting params, which are sent by components.sort-settings
+    *
+    * @params   query
+    * @params   string
+    */
     public function scopeSort($query, $sort)
     {
         if (in_array($sort, ['name', 'email', 'role'])) {

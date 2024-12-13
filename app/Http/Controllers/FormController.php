@@ -8,31 +8,54 @@ use App\Models\Customer;
 use Illuminate\Support\Facades\Mail;
 use Nembie\IbanRule\ValidIban;
 
+
+/**
+* Form Controller
+*
+* Indexing, Creating and Storing Functions to create new entries
+* @access   public
+*/
 class FormController extends Controller
 {
 
+    /**
+    * Default generated index.
+    *
+    * @return   form.thankyou page
+    */
     public function index(Request $request)
     {
         return view('form.thankyou');
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
+    * Show the form for creating a new resource.
+    *
+    * @return   form.create page
+    */
     public function create()
     {
         return view('customers.create');
     }
 
     /**
-     * Store a newly created resource in storage.
-     */
+    * Store a newly created resource in storage.
+    *
+    * Remove spaces in phone and IBAN number for validation, if applicable
+    * Validate data to make sure all non-nullable entries are given
+    * populare new customer with given data
+    * Manually set suggestions to "Ja" or "Nein", depending if it was ticked or not
+    * Set incorporated to default 0 (false)
+    * Save entry to DB and create thankyou email with given email and name + surname
+    *
+    * @params   Request
+    * @return   form.thankyou page with customized message
+    */
     public function store(Request $request)
     {
-        $customer = new Customer();
-
         $request->merge([
-            'iban' => str_replace(' ', '', $request->iban),  // Remove spaces from IBAN
+            'iban' => str_replace(' ', '', $request->iban), 
+            'phone' => str_replace(' ', '', $request->phone),  
         ]);
 
         $validatedData = $request->validate([
@@ -109,7 +132,6 @@ class FormController extends Controller
         }
 
         $customer->incorporated = "0";
-
 
         $customer->save();
 

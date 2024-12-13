@@ -13,22 +13,34 @@ class UserManagementController extends Controller
 {
     use AuthorizesRequests;
 
-    // Show the form
+    /**
+    * Display the form to create a new entry
+    *
+    * Only authorized roles may access this page. More info in UserPolicy.php
+    *
+    * @return   users.create page 
+    */
     public function create()
     {
-        // Ensure only authorized users can access this
-        $this->authorize('create', User::class); // Optional if using Policies
+        $this->authorize('create', User::class); 
 
-        return view('users.create'); // Return a Blade view for the form
+        return view('users.create'); 
     }
 
-    // Show the list of users
+    /**
+    * Display a list of Users
+    *
+    * Only authorized roles may process and submit on this page. More info in UserPolicy.php
+    * Validate search input or sort 
+    * Sort and Search functions are defined in User Model
+    * Paginates 10 entries
+    *
+    * @return   users.index page sorted and/or filtered entries
+    */
     public function index(Request $request)
     {
-        // Check permissions
-        $this->authorize('create', User::class); // Optional if using Policies
+        $this->authorize('create', User::class);
 
-        // Validate inputs
         $validated = $request->validate([
             'search_input' => 'nullable|string|max:255',
             'sort' => 'nullable|string|in:name,email,role',
@@ -40,37 +52,50 @@ class UserManagementController extends Controller
             ->sort($validated['sort'] ?? null)
             ->paginate(10)
             ->withQueryString();
-        return view('users.index', compact('users')); // Return view with users
+        return view('users.index', compact('users')); 
     }
 
-    // Update user details
+    /**
+    * Update user details
+    *
+    * Only authorized roles may process and submit on this page. More info in UserPolicy.php
+    * Validate entered infos
+    *
+    * @return   users.index page with success message
+    */
     public function update(Request $request, User $user)
     {
-        $this->authorize('create', User::class); // Optional if using Policies
-
+        $this->authorize('create', User::class);
 
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $user->id, // Unique except for current user
-            'role' => 'required|string', // Validate role using the Role enum
+            'role' => 'required|string',
         ]);
 
         $user->update([
             'name' => $validated['name'],
             'email' => $validated['email'],
-            'role' => $validated['role'], // Use the role from the enum
+            'role' => $validated['role'], 
         ]);
 
         return redirect()->route('users.index')->with('success', 'User updated successfully!');
     }
 
-    // Handle form submission
+    /**
+    * Handle the form submission
+    *
+    * Only authorized roles may process and submit on this page. More info in UserPolicy.php
+    * Validate entered infos
+    * Create a new user in the DB
+    * Encrypt password with Bcrypt
+    *
+    * @return   users.create page with success message
+    */
     public function store(Request $request)
     {
-        $this->authorize('create', User::class); // Optional if using Policies
+        $this->authorize('create', User::class); 
 
-
-        // Validate input
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users',
@@ -78,17 +103,22 @@ class UserManagementController extends Controller
             'role' => 'required|string',
         ]);
 
-        // Create the user
         User::create([
             'name' => $validated['name'],
             'email' => $validated['email'],
-            'password' => bcrypt($validated['password']), // Hash the password
-            'role' => $validated['role'], // Add role or other fields as necessary
+            'password' => bcrypt($validated['password']),
+            'role' => $validated['role'],
         ]);
 
         return redirect()->route('users.index')->with('success', 'User created successfully!');
     }
 
+    /**
+    * Delete User from DB
+    *
+    * @param    string
+    * @return   users.index page with success message
+    */
     public function destroy(string $id)
     {
         $user = User::find($id);

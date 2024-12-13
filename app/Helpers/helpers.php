@@ -1,5 +1,18 @@
 <?php
 
+/**
+* String Formatter
+*
+* Format strings to be output in conventional formats
+* Phone numbers as 077 000 00 00
+* IBAN numbers as CH00 0000 0000 0000 0
+*
+* @access   public
+* singleton
+* @param    string
+* @return   formatted string
+*/
+
 if (!function_exists('formatPhoneNumberWithSpaces')) {
     function formatPhoneNumberWithSpaces($phoneNumber)
     {

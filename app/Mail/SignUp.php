@@ -10,7 +10,13 @@ use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Mail\Mailables\Address;
 
-
+/**
+* Sign Up Mail
+*
+* Envelope, Content and Attachment Functions for creating a new customer sign up email
+*
+* @access   public
+*/
 class SignUp extends Mailable
 {
     use Queueable, SerializesModels;
@@ -25,8 +31,11 @@ class SignUp extends Mailable
     }
 
     /**
-     * Get the message envelope.
-     */
+    * Get the message envelope.
+    *
+    * @subject  subject header of the Mail
+    * @from     default email sender and email preview message
+    */
     public function envelope(): Envelope
     {
         return new Envelope(
@@ -36,8 +45,8 @@ class SignUp extends Mailable
     }
 
     /**
-     * Get the message content definition.
-     */
+    * Get the message content and paste customer data such as email, name and surname
+    */
     public function content(): Content
     {
         return new Content(
@@ -45,9 +54,12 @@ class SignUp extends Mailable
         );
     }
 
+
     /**
-     * @return array<int, \Illuminate\Mail\Mailables\Attachment>
-     */
+    * Get the file(s) and attach to the email
+    *
+    * @return array<int, \Illuminate\Mail\Mailables\Attachment>
+    */
     public function attachments(): array
     {
         return [

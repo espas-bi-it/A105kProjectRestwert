@@ -7,23 +7,36 @@ use Illuminate\Http\Request;
 use Nembie\IbanRule\ValidIban;
 use Illuminate\Support\Facades\Auth;
 
+/**
+* Customer Controller
+*
+* Indexing, Showing, Updating and Destroying Functions for existing entries
+* @access   public
+*/
 class CustomersController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     */
+    * Display a listing of the customers based on params.
+    *
+    * validatedInput checks if the user entered a search value or wanted to sort the list.
+    * Sort and Search functions are defined in Customer Model
+    * Paginates 10 entries
+    *
+    * @param    Request
+    * @return   index page with list of customers
+    */
     public function index(Request $request)
     {
         // Validate inputs
-        $validated = $request->validate([
+        $validatedInput = $request->validate([
             'search_input' => 'nullable|string|max:255',
             'sort' => 'nullable|string|in:incorporated,name,surname,email,city,created_at',
         ]);
 
         // Build query using scopes
         $customers = Customer::query()
-            ->search($validated['search_input'] ?? null)
-            ->sort($validated['sort'] ?? null)
+            ->search($validatedInput['search_input'] ?? null)
+            ->sort($validatedInput['sort'] ?? null)
             ->paginate(10)
             ->withQueryString();
 
@@ -32,8 +45,14 @@ class CustomersController extends Controller
 
 
     /**
-     * Display the specified resource and enable editing.
-     */
+    * Display the specified resource and enable editing.
+    *
+    * Customer is found by ID
+    * Change output of phone and IBAN number for better user experience
+    *
+    * @param    string
+    * @return   customers-dashboard.show page with customer information
+    */
     public function show(string $id)
     {
         $customer = Customer::find($id);
@@ -43,6 +62,12 @@ class CustomersController extends Controller
         return view('customers-dashboard.show', compact('customer'));
     }
 
+
+    /**
+    * Display graph of commonly ticked Suggestions
+    *
+    * @return   customers-dashboard-graph page 
+    */
     public function showSuggestionsGraph()
     {
         $suggestionsData = [
@@ -56,11 +81,20 @@ class CustomersController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     */
+    * Update the specified resource in storage.
+    *
+    * Update customer data in DB. Revert phone and IBAN formating changes made in show
+    * Updates user who made the changes in updated_by
+    * Checks if incorporated has been changed. 1 for true, 0 for false
+    * Checks entered IBAN number with the ValidateIban library
+    *
+    * @param    Request
+    * @param    string
+    * @return   customers-dashboard.index page
+    */
     public function update(Request $request, string $id)
     {
-          // Find the customer or fail if not found
+        // Find the customer or fail if not found
         $customer = Customer::findOrFail($id);
 
         $request->merge([
@@ -111,12 +145,54 @@ class CustomersController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     */
+    * Move the specified resource from storage to customers_archive
+    *
+    * Soft delete to ensure no data is lost by mistake
+    *
+    * @param    string
+    * @return   customers-dashboard.index page
+    */
     public function destroy(string $id)
     {
+        // Find the customer by ID
         $customer = Customer::find($id);
-        $customer->delete();
+
+        if ($customer) {
+            // Move the customer's data to the 'customers_archive' table
+            \DB::table('customers_archive')->insert([
+                    'id' => $customer->id,
+                    'title' => $customer->title,
+                    'company' => $customer->company,
+                    'name' => $customer->name,
+                    'surname' => $customer->surname,
+                    'address' => $customer->address,
+                    'po_box' => $customer->po_box,
+                    'zip' => $customer->zip,
+                    'city' => $customer->city,
+                    'email' => $customer->email,
+                    'phone' => $customer->phone,
+                    'iban' => $customer->iban,
+                    'bankname' => $customer->bankname,
+                    'alt_title' => $customer->alt_title,
+                    'alt_name' => $customer->alt_name,
+                    'alt_surname' => $customer->alt_surname,
+                    'alt_address' => $customer->alt_address,
+                    'alt_zip' => $customer->alt_zip,
+                    'alt_city' => $customer->alt_city,
+                    'oral_suggestion' => $customer->oral_suggestion,
+                    'ricardo_suggestion' => $customer->ricardo_suggestion,
+                    'socialmedia_suggestion' => $customer->socialmedia_suggestion,
+                    'flyer_suggestion' => $customer->flyer_suggestion,
+                    'incorporated' => $customer->incorporated,
+                    'updated_by' => $customer->updated_by,
+                    'created_at' => $customer->created_at,
+                    'updated_at' => $customer->updated_at,
+                    ]);
+
+                    // Delete the customer from the original table
+                    $customer->delete();
+        }
+
         return redirect('customers');
     }
 
