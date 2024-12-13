@@ -9,18 +9,23 @@
     <!-- Scripts -->
     <title>Restwert Zürich</title>
 </head>
+<x-app-layout>
+    <body>
+        <div class="py-12">
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-1 space-y-6">
+                <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+                    @yield('content')
+                </div>
+            </div>
+        </div>
+    </body>
 
-<body>
+</x-app-layout>
+@if (request()->is('customers'))
+	<div class="pagination-sticky-item" >
+		@yield('pagination')
+	</div>
+@endif
 
-    @unless (request()->is('/') || request()->is('customers/*'))
-        @include('layouts.navigation')
-        @include('nav-bar')
-    @endunless
-    @yield('content')
-
-    <div class="container fixed-static">
-        @yield('pagination')
-    </div>
-</body>
 
 </html>

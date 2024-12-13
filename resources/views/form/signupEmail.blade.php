@@ -1,3 +1,4 @@
+
 @switch($data->title)
     @case('Frau')
         Sehr geehrte Frau {{ $data->name }} {{ $data->surname }}
@@ -12,7 +13,7 @@
 @endswitch
 
 <p> Vielen Dank für Ihre Anmeldung. Im Anhang der Email finden Sie die besprochenen AGBs. </p>
-<p> Sobald Ihr Produkt aufgeschalten wird, erhalten Sie eine Email mit den Angaben und einem Link.</p>
+<p> Sobald Ihr Produkt aufgeschalten wird, erhalten Sie eine Email mit den Angaben und dem Link zum Ricardo-Inserat.</p>
 <p> Wir danken Ihnen für Ihr Vertrauen und hoffen, Sie bald wieder zu sehen!</p>
 
 <p>Freundliche Grüsse </p>
@@ -21,10 +22,6 @@
     <strong>Projekt Restwert Zürich</strong><br>
     Naglerwiesenstrasse 4<br>
     8049 Zürich<br><br>
-    Telefon 043 344 23 47<br>
+    Telefon 043 311 58 25<br>
     E-Mail zuerich@projekt-restwert.ch
-</div>
-
-<div class="col-12 text-center">
-    <img class="logo" src="{{ asset('/image/logo.webp') }}">
 </div>

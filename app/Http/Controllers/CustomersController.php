@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use Nembie\IbanRule\ValidIban;
+use Illuminate\Support\Facades\Auth;
 
 class CustomersController extends Controller
 {
@@ -12,22 +14,20 @@ class CustomersController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->search_input == "") {
-            $customers = Customer::orderBy('created_at', 'DESC')->paginate(10)->withQueryString();
-        } else {
+        // Validate inputs
+        $validated = $request->validate([
+            'search_input' => 'nullable|string|max:255',
+            'sort' => 'nullable|string|in:incorporated,name,surname,email,city,created_at',
+        ]);
 
-            $customers = Customer::where('name', 'LIKE', "%$request->search_input%")->orWhere('surname', 'LIKE', "%$request->search_input%")->orWhere('address', 'LIKE', "%$request->search_input%")->orWhere('zip', 'LIKE', "%$request->search_input%")->orWhere('city', 'LIKE', "%$request->search_input%")->orWhere('email', 'LIKE', "%$request->search_input%")->paginate(10)->withQueryString();
-        }
-        if ($request->sort != "") {
+        // Build query using scopes
+        $customers = Customer::query()
+            ->search($validated['search_input'] ?? null)
+            ->sort($validated['sort'] ?? null)
+            ->paginate(10)
+            ->withQueryString();
 
-            if ($request->sort == "incorporated") {
-                $customers = Customer::where('incorporated', 'LIKE', "0")->paginate(10)->withQueryString();
-
-            } else {
-                $customers = Customer::orderBy($request->sort, 'DESC')->paginate(10)->withQueryString();
-            }
-        }
-        return view('customers.index', ['customers' => $customers]);
+        return view('customers-dashboard.index', compact('customers'));
     }
 
 
@@ -37,7 +37,22 @@ class CustomersController extends Controller
     public function show(string $id)
     {
         $customer = Customer::find($id);
-        return view('customers.show', compact('customer'));
+        $customer->phone = formatPhoneNumberWithSpaces($customer->phone);
+        $customer->iban = formatIbanWithSpaces($customer->iban);
+
+        return view('customers-dashboard.show', compact('customer'));
+    }
+
+    public function showSuggestionsGraph()
+    {
+        $suggestionsData = [
+            'Oral' => Customer::where('oral_suggestion', 'LIKE', '%Ja%')->count(),
+            'Ricardo' => Customer::where('ricardo_suggestion', 'LIKE', '%Ja%')->count(),
+            'Social Media' => Customer::where('socialmedia_suggestion', 'LIKE', '%Ja%')->count(),
+            'Flyer' => Customer::where('flyer_suggestion', 'LIKE', '%Ja%')->count(),
+        ];
+
+        return view('customers-dashboard.graph', compact('suggestionsData'));
     }
 
     /**
@@ -45,69 +60,54 @@ class CustomersController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $customer = Customer::find($id);
-        $validatedData = $request->validate([
-            'title' => 'required|min:2',
-            'name' => 'required',
-            'surname' => 'required',
-            'address' => 'required',
-            'po_box' => '',
-            'zip' => 'required',
-            'city' => 'required',
-            'email' => 'required|email',
-            'phone' => 'required|regex:/(0)[0-9]{9}/',
-            'iban' => 'required',
-            'bankname' => 'required',
-            'alt_title' => '',
-            'alt_name' => '',
-            'alt_surname' => '',
-            'alt_address' => '',
-            'alt_po_box' => '',
-            'alt_zip' => '',
-            'alt_city' => '',
-            'alt_email' => '',
-            'alt_phone' => '',
-            'alt_iban' => '',
-            'alt_bankname' => '',
-            'oral_suggestion' => '',
-            'ricardo_suggestion' => '',
-            'socialmedia_suggestion' => '',
-            'flyer_suggestion' => '',
-            'incorporated' => ''
+          // Find the customer or fail if not found
+        $customer = Customer::findOrFail($id);
+
+        $request->merge([
+            'iban' => str_replace(' ', '', $request->iban),  // Remove spaces from IBAN
+            'phone' => str_replace(' ', '', $request->phone),  // Remove spaces from phone
         ]);
 
-        $customer->title = $validatedData['title'];
-        $customer->name = $validatedData['name'];
-        $customer->surname = $validatedData['surname'];
-        $customer->address = $validatedData['address'];
-        $customer->po_box = $validatedData['po_box'];
-        $customer->zip = $validatedData['zip'];
-        $customer->city = $validatedData['city'];
-        $customer->email = $validatedData['email'];
-        $customer->phone = $validatedData['phone'];
+
+        // Validate the incoming request data
+        $validatedData = $request->validate([
+            'title' => 'required|min:2|string',
+            'company' => 'nullable|string',
+            'name' => 'required|string',
+            'surname' => 'required|string',
+            'address' => 'required|string',
+            'po_box' => 'nullable|string',
+            'zip' => 'required|string',
+            'city' => 'required|string',
+            'email' => 'required|email',
+            'phone' => 'required|regex:/^0\d{9}$/',
+            'iban' => ['required', 'string', new ValidIban],
+            'bankname' => 'required|string',
+            'alt_title' => 'nullable|min:2|string',
+            'alt_name' => 'nullable|string',
+            'alt_surname' => 'nullable|string',
+            'alt_address' => 'nullable|string',
+            'alt_zip' => 'nullable|string',
+            'alt_city' => 'nullable|string',
+            'incorporated' => 'nullable|boolean',
+        ]);
+
+        // Update fields
+        $customer->fill($validatedData);
+
+        // Get the currently logged-in user's name
+        $customer->updated_by = Auth::user()->name;
+
+        // Check and set the incorporated field
+        $customer->incorporated = $request->has('incorporated') ? "1" : "0";
+
+        // Check and set the IBAN field
         $customer->iban = $validatedData['iban'];
-        $customer->bankname = $validatedData['bankname'];
 
-        $customer->alt_title = $validatedData['alt_title'];
-        $customer->alt_name = $validatedData['alt_name'];
-        $customer->alt_surname = $validatedData['alt_surname'];
-        $customer->alt_address = $validatedData['alt_address'];
-        $customer->alt_po_box = $validatedData['alt_po_box'];
-        $customer->alt_zip = $validatedData['alt_zip'];
-        $customer->alt_city = $validatedData['alt_city'];
-        $customer->alt_email = $validatedData['alt_email'];
-        $customer->alt_phone = $validatedData['alt_phone'];
-        $customer->alt_iban = $validatedData['alt_iban'];
-        $customer->alt_bankname = $validatedData['alt_bankname'];
-
-        if (isset($validatedData['incorporated'])) {
-            $customer->incorporated = "1";
-        } else {
-            $customer->incorporated = "0";
-        }
-
+        // Save the updated record
         $customer->save();
-        return redirect('customers');
+
+        return redirect('customers')->with('success', 'Customer updated successfully!');
     }
 
     /**

@@ -41,7 +41,7 @@ class SignUp extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'signupEmail',
+            view: 'form.signupEmail',
         );
     }
 

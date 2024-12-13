@@ -35,6 +35,9 @@ return new class extends Migration
             $table->longText('payload');
             $table->integer('last_activity')->index();
         });
+
+        Schema::table('users', function (Blueprint $table) {
+        });
     }
 
     /**
@@ -43,6 +46,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('users');
+        Schema::dropIfExists('role');
         Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
     }

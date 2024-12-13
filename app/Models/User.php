@@ -20,6 +20,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
@@ -43,5 +44,25 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function scopeSearch($query, $searchInput)
+    {
+        if ($searchInput) {
+            $query->where(function ($query) use ($searchInput) {
+                $query->where('name', 'LIKE', "%$searchInput%")
+                      ->orWhere('email', 'LIKE', "%$searchInput%")
+                      ->orWhere('role', 'LIKE', "%$searchInput%");
+            });
+        }
+    }
+
+    public function scopeSort($query, $sort)
+    {
+        if (in_array($sort, ['name', 'email', 'role'])) {
+            $query->orderBy($sort, 'ASC');
+        } else {
+            $query->orderBy('created_at', 'DESC');
+        }
     }
 }

@@ -6,14 +6,14 @@ use App\Mail\SignUp;
 use Illuminate\Http\Request;
 use App\Models\Customer;
 use Illuminate\Support\Facades\Mail;
-
+use Nembie\IbanRule\ValidIban;
 
 class FormController extends Controller
 {
 
     public function index(Request $request)
     {
-        return view('thankyou');
+        return view('form.thankyou');
     }
 
     /**
@@ -31,8 +31,13 @@ class FormController extends Controller
     {
         $customer = new Customer();
 
+        $request->merge([
+            'iban' => str_replace(' ', '', $request->iban),  // Remove spaces from IBAN
+        ]);
+
         $validatedData = $request->validate([
             'title' => 'required|min:2',
+            'company' => '',
             'name' => 'required',
             'surname' => 'required',
             'address' => 'required',
@@ -41,19 +46,14 @@ class FormController extends Controller
             'city' => 'required',
             'email' => 'required|email',
             'phone' => 'required|regex:/(0)[0-9]{9}/',
-            'iban' => 'required',
+            'iban' => ['required', 'string', new ValidIban],
             'bankname' => 'required',
             'alt_title' => '',
             'alt_name' => '',
             'alt_surname' => '',
             'alt_address' => '',
-            'alt_po_box' => '',
             'alt_zip' => '',
             'alt_city' => '',
-            'alt_email' => '',
-            'alt_phone' => '',
-            'alt_iban' => '',
-            'alt_bankname' => '',
             'oral_suggestion' => '',
             'ricardo_suggestion' => '',
             'socialmedia_suggestion' => '',
@@ -65,6 +65,7 @@ class FormController extends Controller
         $customer = new Customer();
 
         $customer->title = $validatedData['title'];
+        $customer->company = $validatedData['company'];
         $customer->name = $validatedData['name'];
         $customer->surname = $validatedData['surname'];
         $customer->address = $validatedData['address'];
@@ -80,13 +81,8 @@ class FormController extends Controller
         $customer->alt_name = $validatedData['alt_name'];
         $customer->alt_surname = $validatedData['alt_surname'];
         $customer->alt_address = $validatedData['alt_address'];
-        $customer->alt_po_box = $validatedData['alt_po_box'];
         $customer->alt_zip = $validatedData['alt_zip'];
         $customer->alt_city = $validatedData['alt_city'];
-        $customer->alt_email = $validatedData['alt_email'];
-        $customer->alt_phone = $validatedData['alt_phone'];
-        $customer->alt_iban = $validatedData['alt_iban'];
-        $customer->alt_bankname = $validatedData['alt_bankname'];
 
         if (isset($validatedData['oral_suggestion'])) {
             $customer->oral_suggestion = "Ja";
