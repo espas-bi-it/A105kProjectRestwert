@@ -36,7 +36,6 @@
                                 </a>
                                 @if(Auth::check() && Auth::user()->role === 'Admin')
                                 <!-- Delete Button -->
-
                                 <button form="delete-form-{{ $customer->id }}" type="button" data-user-id="{{ $customer->id }}" class="open-modal" style="border: none; background: none;" title="Löschen">
                                     <img src="{{ asset('image/delete.png') }}" alt="Löschen" class="icon-img">
                                 </button>
