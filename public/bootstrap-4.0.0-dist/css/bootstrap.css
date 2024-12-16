@@ -229,6 +229,13 @@ img {
   border-style: none;
 }
 
+.icon-img {
+    min-width: 25px !important;
+    max-width: 25px !important;
+    min-height: 25px !important;
+    max-height: 25px !important;
+}
+
 svg:not(:root) {
   overflow: hidden;
 }

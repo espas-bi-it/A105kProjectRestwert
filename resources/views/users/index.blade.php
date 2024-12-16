@@ -9,14 +9,12 @@
             {{ session('success') }}
         </div>
     @endif
-
     <table class="table">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Rolle</th>
-                <th>Actions</th>
+                <th class="col-5">Name</th>
+                <th class="col-5">Email</th>
+                <th class="col-1">Rolle</th>
                 <th></th>
             </tr>
         </thead>
@@ -24,38 +22,26 @@
             @foreach($users as $user)
                 @if ($user->email !== Auth::user()->email)
                 <tr>
-                    <form id="updateUser-{{ $user->id }}" action="{{ route('users.update', $user) }}" method="POST">
-                        @csrf
-                        <td>
-                            <input type="text" name="name" value="{{ $user->name }}" class="form-control">
-                        </td>
-                        <td>
-                            <input type="email" name="email" value="{{ $user->email }}" class="form-control">
-                        </td>
-                        <td>
-                        <div></div>
-                            <select name="role" class="form-select">
-                                <option value="Admin" {{ $user->role === "Admin" ? 'selected' : '' }}>Admin</option>
-                                <option value="TV" {{ $user->role === "TV" ? 'selected' : '' }}>TV</option>
-                                <option value="Teilnehmer" {{ $user->role === "Teilnehmer" ? 'selected' : '' }}>Teilnehmer</option>
-                            </select>
-                        </td>
-                        <td>
-                            <!-- Make the button associate with the specific form -->
-                            <button type="submit" form="updateUser-{{ $user->id }}" class="btn btn-primary">Update</button>
-                        </td>
-                    </form>
-                        <td>
+                    <td class="align-middle">{{ $user->name }}</td>
+                    <td class="align-middle">{{ $user->email }}</td>
+                    <td class="align-middle">{{ $user->role }}</td>
+                    <td class="align-middle">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <!-- Edit Button -->    
+                            <a href="{{ url('users', ['id' => $user->id]) }}" title="Bearbeiten">
+                                <img src="{{ asset('image/edit.png') }}" alt="Bearbeiten" class="icon-img">
+                            </a>
+                            <button form="delete-form-{{ $user->id }}" type="button" data-user-id="{{ $user->id }}" class="open-modal" style="border: none; background: none;" title="Löschen">
+                                <img src="{{ asset('image/delete.png') }}" alt="Löschen" class="icon-img">
+                            </button>
+                                <!-- Delete Button -->
                             <form id="delete-form-{{ $user->id }}" action="{{ route('users.destroy', $user->id) }}" method="POST">
                                 @csrf
-                                <button type="button" data-user-id="{{ $user->id }}" class="btn btn-danger open-modal">
-                                    Eintrag löschen
-                                </button>
                             </form>
-                        </td>
+                        </div>
+                    </td>
                 </tr>
                 @endif
-
             @endforeach
         </tbody>
     </table>

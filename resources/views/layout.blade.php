@@ -11,8 +11,8 @@
 </head>
 <x-app-layout>
     <body>
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-1 space-y-6">
+        <div class="py-10">
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-1">
                 <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                     @yield('content')
                 </div>

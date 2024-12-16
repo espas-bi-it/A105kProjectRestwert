@@ -56,6 +56,21 @@ class UserManagementController extends Controller
     }
 
     /**
+    * Display the specified resource and enable editing.
+    *
+    * User is found by ID
+    *
+    * @param    string
+    * @return   users.show page with customer information
+    */
+    public function show(string $id)
+    {
+        $user = User::find($id);
+
+        return view('users.show', compact('user'));
+    }
+
+    /**
     * Update user details
     *
     * Only authorized roles may process and submit on this page. More info in UserPolicy.php
