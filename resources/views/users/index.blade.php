@@ -101,5 +101,8 @@
         });
     });
 </script>
+@endsection
 
+@section('pagination')
+    {{ $users->links() }}
 @endsection
