@@ -63,7 +63,7 @@ class SignUp extends Mailable
     public function attachments(): array
     {
         return [
-            Attachment::fromPath(public_path('\file\AGBs.pdf'))
+            Attachment::fromPath(public_path('/file/AGBs.pdf'))
        ];
     }
 }

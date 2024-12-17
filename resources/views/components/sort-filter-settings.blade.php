@@ -26,9 +26,9 @@
         function changeButtonText() {
             var x = document.getElementById("sort").value;
             if (x == "incorporated") {
-                document.getElementById("filter-btn").innerHTML = "Filtern";
+                document.getElementById("filter-btn").innerHTML = "Filter";
             } else {
-                document.getElementById("filter-btn").innerHTML = "Sortieren";
+                document.getElementById("filter-btn").innerHTML = "{{ __('buttons.sort') }}";
             }
         }
     </script>

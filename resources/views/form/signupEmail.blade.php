@@ -1,21 +1,21 @@
 @switch($data->title)
     @case('Frau')
-        Sehr geehrte Frau {{ $data->name }} {{ $data->surname }}
+        {{ __('mail.greeting_f') }} {{ $data->name }} {{ $data->surname }}
     @break
 
     @case('Herr')
-        Sehr geehrter Herr {{ $data->name }} {{ $data->surname }}
+        {{ __('mail.greeting_m') }} {{ $data->name }} {{ $data->surname }}
     @break
 
     @default
-        Sehr geehrte Damen und Herren
+        {{ __('mail.greeting_default') }}
 @endswitch
 
-<p> Vielen Dank für Ihre Anmeldung. Im Anhang der Email finden Sie die besprochenen AGBs. </p>
-<p> Sobald Ihr Produkt aufgeschalten wird, erhalten Sie eine Email mit den Angaben und dem Link zum Ricardo-Inserat.</p>
-<p> Wir danken Ihnen für Ihr Vertrauen und hoffen, Sie bald wieder zu sehen!</p>
+<p> {{ __('mail.thankyou') }} </p>
+<p> {{ __('mail.thankyou2') }}</p>
+<p> {{ __('mail.thankyou3') }}</p>
 
-<p>Freundliche Grüsse </p>
+<p>{{ __('mail.best_regards') }} </p>
 
 <div>
     <strong>Projekt Restwert Zürich</strong><br>
