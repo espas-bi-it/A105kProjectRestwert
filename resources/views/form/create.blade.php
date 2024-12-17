@@ -38,8 +38,8 @@
                         <label for="title">  {{ __('fields.title') }}* </label>
                         <select name="title" class="form-control" id="title" value="{{ old('title') }}" required>
                         <option value="" style="display:none" selected disabled>{{ __('fields.selection') }}</option>
-                        <option value="Frau" {{ old('title') == "Frau" ? 'selected' : '' }} >Frau</option>
-                        <option value="Herr" {{ old('title') == "Herr" ? 'selected' : '' }}>Herr</option>
+                        <option value="Frau" {{ old('title') == "Frau" ? 'selected' : '' }} >{{ __('fields.female') }}</option>
+                        <option value="Herr" {{ old('title') == "Herr" ? 'selected' : '' }}>{{ __('fields.female') }}</option>
                         </select>
                     </div>
                     <div class="col  my-1">
