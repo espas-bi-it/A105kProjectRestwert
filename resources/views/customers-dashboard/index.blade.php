@@ -22,7 +22,7 @@
     <!-- Table Entries -->
     @foreach ($customers as $customer)
         <tr>
-            <td class="align-middle">{{ $customer->incorporated == 0 ? 'Nein' : 'Ja' }}</td>
+            <td class="align-middle">{{ $customer->incorporated == 0 ? __('fields.no') : __('fields.yes') }}</td>
             <td class="align-middle">{{ $customer->name }}</td>
             <td class="align-middle">{{ $customer->surname }}</td>
             <td class="align-middle">{{ $customer->address }}</td>

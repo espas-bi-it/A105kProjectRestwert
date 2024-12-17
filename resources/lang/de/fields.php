@@ -16,6 +16,7 @@ return [
     'phone' => 'Telefon',
     'iban' => 'IBAN',
     'bankname' => 'Bankname',
+    'graph_text' => 'Anzahl Kunden mit diesen Kriterien', 
     'oral_suggestion' => 'Mündliche Empfehlung',
     'ricardo_suggestion' => 'Ricardo Empfehlung',
     'socialmedia_suggestion' => 'Social Media Empfehlung',
@@ -39,6 +40,8 @@ return [
     'date' => 'Datum',
     'role' => 'Rolle',
     'password' => 'Passwort',
+    'yes' => 'Ja',
+    'no' => 'Nein',
 
 ];
 

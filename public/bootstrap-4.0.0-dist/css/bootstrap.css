@@ -236,6 +236,19 @@ img {
     max-height: 25px !important;
 }
 
+.img-flag {
+    margin: 8px !important;
+    width: 20px !important;
+    height: 15px !important;
+    opacity: .5 !important;
+}
+
+.img-selected {
+    margin: 8px !important;
+    width: 30px !important;
+    height: 20px !important;
+}
+
 svg:not(:root) {
   overflow: hidden;
 }

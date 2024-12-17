@@ -1,5 +1,7 @@
 @extends('layout')
 @section('content')
+@include('components.locale-switcher')
+
 <script async src="https://www.google.com/recaptcha/api.js"></script>
 <script>
     // Call HideInputFields on page load if alt_form_check is checked
@@ -10,7 +12,6 @@
     };
 </script>
     <div class="container">
-        @include('components.locale-switcher')
         <form method="POST" action="/thankyou" onsubmit="return DisableButtonOnSubmit()">
             @csrf
             <div class="container">

@@ -22,7 +22,7 @@
             data: {
                 labels: labels,
                 datasets: [{
-                    label: 'Anzahl Kunden mit diesen Kriterien',
+                    label: " {{ __('fields.graph_text') }} ",
                     data: data,
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',

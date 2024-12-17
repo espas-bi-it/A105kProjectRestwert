@@ -1,13 +1,33 @@
-<form method="GET">
-    <select id="language-switcher" onchange="window.location.href=this.value;">
-        <option value="{{ route('locale.switch', 'en') }}" {{ app()->getLocale() == 'en' ? 'selected' : '' }}>
-             {{ __('fields.english') }}
-        </option>
-        <option value="{{ route('locale.switch', 'de') }}" {{ app()->getLocale() == 'de' ? 'selected' : '' }}>
-             {{ __('fields.german') }}
-        </option>
-        <option value="{{ route('locale.switch', 'fr') }}" {{ app()->getLocale() == 'fr' ? 'selected' : '' }}>
-             {{ __('fields.french') }}
-        </option>
-    </select>
+<form id="language-form" method="GET" action="">
+    <div class="container" style="display: flex;">
+        <!-- English Button -->
+        <button type="button" onclick="setLanguageAction('en')">
+            <img src="{{ asset('image/english.png') }}" 
+                 alt="English Flag" 
+                 {{ app()->getLocale() == 'en' ? 'class=img-selected' : 'class=img-flag' }}>
+        </button>
+
+        <!-- German Button -->
+        <button type="button" onclick="setLanguageAction('de')">
+            <img src="{{ asset('image/german.png') }}" 
+                 alt="German Flag" 
+                 {{ app()->getLocale() == 'de' ? 'class=img-selected' : 'class=img-flag' }}>
+        </button>
+
+        <!-- French Button -->
+        <button type="button" onclick="setLanguageAction('fr')">
+            <img src="{{ asset('image/french.png') }}" 
+                 alt="French Flag" 
+                 {{ app()->getLocale() == 'fr' ? 'class=img-selected' : 'class=img-flag' }}>
+        </button>
+    </div>
 </form>
+
+<script>
+    function setLanguageAction(language) {
+        const form = document.getElementById('language-form');
+        // Update the form's action dynamically
+        form.action = `{{ url('locale/') }}/${language}`;
+        form.submit();
+    }
+</script>

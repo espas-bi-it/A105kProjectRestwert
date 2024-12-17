@@ -18,4 +18,7 @@ return [
     'cancel' => 'Abbrechen',
     'create_user' => 'Benutzer erstellen',
 
+    'admin' => 'Admin',
+    'participant' => 'Teilnehmer',
+    'group_lead' => 'TV',
 ];

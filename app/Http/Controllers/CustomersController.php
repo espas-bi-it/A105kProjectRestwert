@@ -71,10 +71,10 @@ class CustomersController extends Controller
     public function showSuggestionsGraph()
     {
         $suggestionsData = [
-            'Oral' => Customer::where('oral_suggestion', 'LIKE', '%Ja%')->count(),
-            'Ricardo' => Customer::where('ricardo_suggestion', 'LIKE', '%Ja%')->count(),
-            'Social Media' => Customer::where('socialmedia_suggestion', 'LIKE', '%Ja%')->count(),
-            'Flyer' => Customer::where('flyer_suggestion', 'LIKE', '%Ja%')->count(),
+            __('fields.oral_suggestion') => Customer::where('oral_suggestion', 'LIKE', '%Ja%')->count(),
+            __('fields.ricardo_suggestion') => Customer::where('ricardo_suggestion', 'LIKE', '%Ja%')->count(),
+            __('fields.socialmedia_suggestion') => Customer::where('socialmedia_suggestion', 'LIKE', '%Ja%')->count(),
+            __('fields.flyer_suggestion') => Customer::where('flyer_suggestion', 'LIKE', '%Ja%')->count(),
         ];
 
         return view('customers-dashboard.graph', compact('suggestionsData'));

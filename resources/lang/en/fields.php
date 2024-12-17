@@ -20,6 +20,7 @@ return [
     'ricardo_suggestion' => 'Ricardo',
     'socialmedia_suggestion' => 'Social Media',
     'flyer_suggestion' => 'Flyer',
+    'graph_text' => 'Number of customers with these criteria',
     'incorporated' => 'Incorporated',
     'alternative_input' => 'Alternative Data',
     'suggestion_text' => 'How did you learn about us?',
@@ -39,6 +40,8 @@ return [
     'date' => 'Date',
     'role' => 'Role',
     'password' => 'Password',
+    'yes' => 'Yes',
+    'no' => 'No',
 
 ];
 

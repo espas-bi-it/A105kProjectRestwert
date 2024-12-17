@@ -18,4 +18,7 @@ return [
     'cancel' => 'Cancel',
     'create_user' => 'Create User',
 
+    'admin' => 'Admin',
+    'participant' => 'Participant',
+    'group_lead' => 'Group Lead',
 ];
