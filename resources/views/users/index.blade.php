@@ -12,9 +12,9 @@
     <table class="table">
         <thead>
             <tr>
-                <th class="col-5">Anzeigename</th>
-                <th class="col-5">Email</th>
-                <th class="col-1">Rolle</th>
+                <th class="col-5">{{ __('fields.name') }}</th>
+                <th class="col-5">{{ __('fields.email') }}</th>
+                <th class="col-1">{{ __('fields.role') }}</th>
                 <th></th>
             </tr>
         </thead>
@@ -28,11 +28,11 @@
                     <td class="align-middle">
                         <div style="display: flex; align-items: center; gap: 10px;">
                             <!-- Edit Button -->    
-                            <a href="{{ url('users', ['id' => $user->id]) }}" title="Bearbeiten">
-                                <img src="{{ asset('image/edit.png') }}" alt="Bearbeiten" class="icon-img">
+                            <a href="{{ url('users', ['id' => $user->id]) }}" title="{{ __('buttons.edit') }}">
+                                <img src="{{ asset('image/edit.png') }}" alt="{{ __('buttons.edit') }}" class="icon-img">
                             </a>
-                            <button form="delete-form-{{ $user->id }}" type="button" data-user-id="{{ $user->id }}" class="open-modal" style="border: none; background: none;" title="Löschen">
-                                <img src="{{ asset('image/delete.png') }}" alt="Löschen" class="icon-img">
+                            <button form="delete-form-{{ $user->id }}" type="button" data-user-id="{{ $user->id }}" class="open-modal" style="border: none; background: none;" title="{{ __('buttons.delete') }}">
+                                <img src="{{ asset('image/delete.png') }}" alt="{{ __('buttons.delete') }}" class="icon-img">
                             </button>
                                 <!-- Delete Button -->
                             <form id="delete-form-{{ $user->id }}" action="{{ route('users.destroy', $user->id) }}" method="POST">
@@ -52,15 +52,15 @@
     <div id="modal-dialog" class="modal-dialog" style="margin: auto; position: relative; top: 50%; transform: translateY(-50%); width: 50%;">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="confirmModalLabel">Löschung bestätigen</h5>
+                <h5 class="modal-title" id="confirmModalLabel">{{ __('buttons.confirm_delete') }}</h5>
                 <button type="button" class="btn-close" id="closeModal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                Sind Sie sicher, dass Sie diesen Benutzer löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden.
+                {{ __('buttons.customer_confirm_text') }}
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" id="cancelDelete">Abbrechen</button>
-                <button type="button" id="confirmDelete" class="btn btn-danger">Löschen</button>
+                <button type="button" class="btn btn-secondary" id="cancelDelete">{{ __('buttons.cancel') }}</button>
+                <button type="button" id="confirmDelete" class="btn btn-danger">{{ __('buttons.delete') }}</button>
             </div>
         </div>
     </div>

@@ -3,21 +3,21 @@
         <ul class="navbar-nav mr-auto">
             <form method="GET" class="form-inline my-2 my-lg-0 p-1 ">
                 <select class="form-control mr-sm-2  pr-5" name="sort" id="sort" onchange="changeButtonText()">
-                    <option selected disabled style="display:none">Bitte auswählen</option>
-                    <option value="incorporated">Zum eintragen</option>
-                    <option value="name">Vorname</option>
-                    <option value="surname">Nachname</option>
-                    <option value="city">Ort</option>
+                    <option selected disabled style="display:none">{{ __('fields.selection') }}</option>
+                    <option value="incorporated">{{ __('fields.incorporated') }}</option>
+                    <option value="name">{{ __('fields.name') }}</option>
+                    <option value="surname">{{ __('fields.surname') }}</option>
+                    <option value="city">{{ __('fields.city') }}</option>
                 </select>
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="filter-btn">Sortieren</button>
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="filter-btn">{{ __('buttons.sort') }}</button>
             </form>
         </ul>
         <ul>
             <form method="GET" class="form-inline my-2 my-lg-0" role="search">
-                <input class="form-control mr-sm-2" type="search" placeholder="Suchen"
+                <input class="form-control mr-sm-2" type="search"
                     value="{{ isset($_GET['search_input']) ? $_GET['search_input'] : '' }}" aria-label="Search"
                     name="search_input">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="search">Suchen</button>
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="search">{{ __('buttons.search') }}</button>
             </form>
         </ul>
     </nav>

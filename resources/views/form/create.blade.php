@@ -10,6 +10,7 @@
     };
 </script>
     <div class="container">
+        @include('components.locale-switcher')
         <form method="POST" action="/thankyou" onsubmit="return DisableButtonOnSubmit()">
             @csrf
             <div class="container">
@@ -33,16 +34,16 @@
                 <div class="form-row">
                     <div class="col  my-1">
                          <!-- Anrede -->
-                        <label for="title"> Anrede* </label>
+                        <label for="title">  {{ __('fields.title') }}* </label>
                         <select name="title" class="form-control" id="title" value="{{ old('title') }}" required>
-                        <option value="" style="display:none" selected disabled>Bitte wählen</option>
+                        <option value="" style="display:none" selected disabled>{{ __('fields.selection') }}</option>
                         <option value="Frau" {{ old('title') == "Frau" ? 'selected' : '' }} >Frau</option>
                         <option value="Herr" {{ old('title') == "Herr" ? 'selected' : '' }}>Herr</option>
                         </select>
                     </div>
                     <div class="col  my-1">
                          <!-- Firma -->
-                        <label for="company"> Firma</label>
+                        <label for="company">{{ __('fields.company') }}</label>
                         <input name="company" class="form-control" id="company" value="{{ old('company') }}">
                     </div>
                 </div>
@@ -50,12 +51,12 @@
                 <div class="form-row">
                     <div class="col  my-1">
                          <!-- Vorname -->
-                        <label for="name"> Vorname*</label>
+                        <label for="name"> {{ __('fields.name') }}*</label>
                         <input name="name" class="form-control" id="name" value="{{ old('name') }}" required>
                     </div>
                     <div class="col  my-1">
                          <!-- Nachname -->
-                        <label for="surname"> Nachname*</label>
+                        <label for="surname"> {{ __('fields.surname') }}*</label>
                         <input name="surname" class="form-control" id="surname" value="{{ old('surname') }}" required>
                     </div>
                 </div>
@@ -63,12 +64,12 @@
                 <div class="form-row">
                     <div class="col  my-1">
                          <!-- Adresse -->
-                        <label for="address"> Adresse*</label>
+                        <label for="address"> {{ __('fields.address') }}*</label>
                         <input name="address" class="form-control" id="address" value="{{ old('address') }}" required>
                     </div>
                     <div class="col  my-1">
                          <!-- Postfach -->
-                        <label for="po_box"> Postfach</label>
+                        <label for="po_box"> {{ __('fields.po_box') }}</label>
                         <input name="po_box" class="form-control" id="po_box" value="{{ old('po_box') }}">
                     </div>
                 </div>
@@ -76,12 +77,12 @@
                 <div class="form-row">
                     <div class="col  my-1">
                          <!-- PLZ -->
-                        <label for="zip"> PLZ*</label>
+                        <label for="zip"> {{ __('fields.zip') }}*</label>
                         <input name="zip" class="form-control" id="zip" value="{{ old('zip') }}" required>
                     </div>
                     <div class="col  my-1">
                          <!-- Ort -->
-                        <label for="city"> Ort*</label>
+                        <label for="city"> {{ __('fields.city') }}*</label>
                         <input name="city" class="form-control" id="city" value="{{ old('city') }}" required>
                     </div>
                 </div>
@@ -89,24 +90,24 @@
                 <div class="form-row">
                     <div class="col  my-1">
                          <!-- Email -->
-                        <label for="email"> Email*</label>
+                        <label for="email"> {{ __('fields.email') }}*</label>
                         <input name="email" class="form-control" id="email" value="{{ old('email') }}" required>
                     </div>
                     <div class="col  my-1">
                          <!-- Telefon -->
-                        <label for="phone"> Telefon*</label>
+                        <label for="phone"> {{ __('fields.phone') }}*</label>
                         <input name="phone" class="form-control" id="phone" value="{{ old('phone') }}" required>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col  my-1">
                          <!-- IBAN -->
-                        <label for="iban"> IBAN*</label>
+                        <label for="iban"> {{ __('fields.iban') }}*</label>
                         <input name="iban" class="form-control" id="iban" value="{{ old('iban') }}" required>
                     </div>
                     <div class="col  my-1">
                          <!-- Bankname -->
-                        <label for="bankname"> Bankname*</label>
+                        <label for="bankname"> {{ __('fields.bankname') }}*</label>
                         <input name="bankname" class="form-control" id="bankname" value="{{ old('bankname') }}" required>
                     </div>
                 </div>
@@ -116,7 +117,7 @@
                 <div class="form-check mt-3">
                     <input type="checkbox" class="form-check-input" id="alt_form_check" name="alt_form_check"
                         onchange="HideInputFields()" {{ old('alt_form_check') ? 'checked' : '' }}>
-                    <label class="form-check-label" for="alt_form_check">Alternative Daten </label>
+                    <label class="form-check-label" for="alt_form_check">{{ __('fields.alternative_input') }} </label>
                 </div>
 
 
@@ -124,9 +125,9 @@
                     <div class="form-row">
                         <div class="col  my-1">
                             <!-- Alternative Anrede -->
-                            <label for="alt_title"> Anrede </label>
+                            <label for="alt_title"> {{ __('fields.title') }} </label>
                             <select name="alt_title" class="form-control" id="alt_title" value="{{ old('alt_title') }}">
-                            <option value="" style="display:none" selected readonly="readonly">Bitte wählen</option>
+                            <option value="" style="display:none" selected readonly="readonly">{{ __('fields.selection') }}</option>
                             <option value="Frau" {{ old('alt_title') == "Frau" ? 'selected' : '' }} >Frau</option>
                             <option value="Herr" {{ old('alt_title') == "Herr" ? 'selected' : '' }}>Herr</option>
                             </select>
@@ -138,12 +139,12 @@
                     <div class="form-row">
                         <div class="col  my-1">
                             <!-- Alternativer Vorname -->
-                            <label for="alt_name"> Vorname</label>
+                            <label for="alt_name"> {{ __('fields.name') }}</label>
                             <input name="alt_name" class="form-control" id="alt_name" value="{{ old('alt_name') }}">
                         </div>
                         <div class="col  my-1">
                             <!-- Alternativer Nachname -->
-                            <label for="alt_surname"> Nachname</label>
+                            <label for="alt_surname"> {{ __('fields.surname') }}</label>
                             <input name="alt_surname" class="form-control" id="alt_surname"
                                 value="{{ old('alt_surname') }}">
                         </div>
@@ -151,20 +152,20 @@
                     <div class="form-row">
                         <div class="col  my-1">
                             <!-- Alternative Adresse -->
-                            <label for="alt_address"> Adresse</label>
+                            <label for="alt_address"> {{ __('fields.address') }}</label>
                             <input name="alt_address" class="form-control" id="alt_address"
                                 value="{{ old('alt_address') }}">
-                        </div
-                    </div
+                        </div>
+                    </div>
                     <div class="form-row">
                         <div class="col  my-1">
                             <!-- Alternative PLZ -->
-                            <label for="alt_zip"> PLZ</label>
+                            <label for="alt_zip"> {{ __('fields.zip') }}</label>
                             <input name="alt_zip" class="form-control" id="alt_zip" value="{{ old('alt_zip') }}">
                         </div>
                         <div class="col  my-1">
                             <!-- Alternativer Ort -->
-                            <label for="alt_city"> Ort</label>
+                            <label for="alt_city"> {{ __('fields.city') }}</label>
                             <input name="alt_city" class="form-control" id="alt_city" value="{{ old('alt_city') }}">
                         </div>
                     </div>
@@ -175,31 +176,31 @@
 
                 <div class="mt-2">
                     <!-- Umfrage -->
-                    <h5><u> Wie haben Sie von uns erfahren?</u></h5>
+                    <h5><u>{{ __('fields.suggestion_text') }}</u></h5>
                 </div>
                 <div class="form-check">
                     <!-- Mündliche Empfehlung -->
                     <input class="form-check-input" type="checkbox" name="oral_suggestion" id="oral_suggestion"
                         value={{ old('oral_suggestion') ? 'Ja' : 'Nein' }} {{ old('oral_suggestion') == 'Nein' ? 'checked' : '' }}>
-                    <label class="form-check-label" for="oral_suggestion"> Mündliche Empfehlung</label>
+                    <label class="form-check-label" for="oral_suggestion"> {{ __('fields.oral_suggestion') }}</label>
                 </div>
                 <div class="form-check">
                     <!-- Ricardo -->
                     <input class="form-check-input" type="checkbox" name="ricardo_suggestion" id="ricardo_suggestion"
                         value={{ old('ricardo_suggestion') ? 'Ja' : 'Nein' }} {{ old('ricardo_suggestion') == 'Nein' ? 'checked' : '' }}>
-                    <label class="form-check-label" for="ricardo_suggestion"> Ricardo</label>
+                    <label class="form-check-label" for="ricardo_suggestion"> {{ __('fields.ricardo_suggestion') }}</label>
                 </div>
                 <div class="form-check">
                     <!-- Social Media -->
                     <input class="form-check-input" type="checkbox" name="socialmedia_suggestion"
                         id="socialmedia_suggestion" value={{ old('socialmedia_suggestion') ? 'Ja' : 'Nein' }} {{ old('socialmedia_suggestion') == 'Nein' ? 'checked' : '' }}>
-                    <label class="form-check-label" for="socialmedia_suggestion"> Social Media</label>
+                    <label class="form-check-label" for="socialmedia_suggestion"> {{ __('fields.socialmedia_suggestion') }}</label>
                 </div>
                 <div class="form-check">
                     <!-- Flyer -->
                     <input class="form-check-input" type="checkbox" name="flyer_suggestion" id="flyer_suggestion"
                         value={{ old('flyer_suggestion') ? 'Ja' : 'Nein' }} {{ old('flyer_suggestion') == 'Nein' ? 'checked' : '' }}>
-                    <label class="form-check-label" for="flyer_suggestion"> Flyer</label>
+                    <label class="form-check-label" for="flyer_suggestion"> {{ __('fields.flyer_suggestion') }}</label>
                 </div>
 
                 <hr> </hr>
@@ -209,22 +210,17 @@
                         <input class="form-check-input" type="checkbox" id="gridCheck" required>
                         <label class="form-check-label" for="gridCheck">
                         <!-- AGBs und Text -->
-                            AGBs*
+                            {{ __('fields.tos') }}*
                         </label><br>
-                        <span> Hiermit bestätigen Sie die Richtigkeit Ihrer Angaben und akzeptieren unsere AGB, welche Sie
-                            nach
-                            der Anmeldung erneut per E-Mail erhalten werden. Ihre Angaben werden zu keinem Zeitpunkt an
-                            Dritte
-                            weitergegeben. Ihre Mailadresse kann, bei Veränderungen unserer AGB oder Dienstleistung, zu
-                            Informationszwecken verwendet werden. </span>
+                        <span> {{ __('fields.tos_text') }} </span>
                     </div>
                 </div>
             </div>
             <!-- Google Recaptcha Widget-->
             <div class="g-recaptcha mt-4" data-sitekey={{config('services.recaptcha.key')}}></div>
                     <button type="submit" id="submitBtn" class="btn btn-lg btn-primary" style="margin-top:10px;margin-bottom:10px"
-                        value="Eintragen">Eintragen</button>
-                 <div> * Felder müssen ausgefüllt werden. </div>
+                        value="Eintragen">{{ __('fields.submit') }}</button>
+                 <div> {{ __('fields.field_required') }} </div>
         </form>
         <script>
             // Hide the alternative input fields if checkbox isn't checked

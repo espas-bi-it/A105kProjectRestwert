@@ -13,13 +13,13 @@
             <div class="container">
                     <div class="form-row">
                         <div class="col">
-                            <label for="name">Voller Name</label>
+                            <label for="name"> {{ __('fields.name') }}</label>
                             <input class="form-control" name="name" id="name" required>
-                            <label for="email">Email</label>
+                            <label for="email">{{ __('fields.email') }}</label>
                             <input class="form-control" name="email" id="email" required>
-                            <label for="password">Passwort</label>
+                            <label for="password">{{ __('fields.password') }}</label>
                             <input class="form-control border-gray-300 rounded" type="password" name="password" id="password" required>
-                            <label for="role">Rolle</label>
+                            <label for="role">{{ __('fields.role') }}</label>
                             <select class="form-control" name="role" id="role">
                                 <option value="admin">Admin</option>
                                 <option value="tv">TV</option>
@@ -29,7 +29,7 @@
                     </div>
                     <div class="form-row pt-3 pb-3">
                         <div class="col">
-                            <button class="btn btn-primary"  type="submit">Create User</button>
+                            <button class="btn btn-primary"  type="submit">{{ __('buttons.create_user') }}</button>
                         </div>
                         <div class="col">
 

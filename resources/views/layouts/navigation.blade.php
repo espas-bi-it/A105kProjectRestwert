@@ -14,13 +14,13 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="url('customers')">
-                        {{ __('Dashboard') }}
+                        Dashboard
                     </x-nav-link>
                     <x-nav-link :href="url('/')">
-                        {{ __('Neuen Kunden eintragen') }}
+                        {{ __('buttons.new_customer') }}
                     </x-nav-link>
                     <x-nav-link :href="url('/graph')">
-                        {{ __('Statistik') }}
+                        {{ __('buttons.statistic') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -42,12 +42,12 @@
                     <x-slot name="content">
                         <!-- Profil Name & Rolle -->
                         <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Profil') }}
+                            {{ __('buttons.profile') }}
                         </x-dropdown-link>
                         @if(Auth::check() && Auth::user()->role === 'Admin' || Auth::check() && Auth::user()->role === 'TV')
                         <!-- Benutzer verwalten -->
                          <x-dropdown-link :href="url('/users/index')">
-                            {{ __('Benutzer verwalten') }}
+                            {{ __('buttons.edit_user') }}
                         </x-dropdown-link>
                         @endif
 
@@ -57,7 +57,7 @@
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                {{ __('Log Out') }}
+                                {{ __('buttons.logout') }}
                             </x-dropdown-link>
                         </form>
                     </x-slot>
@@ -82,10 +82,10 @@
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="url('/')">
-                {{ __('Neuen Kunden eintragen') }}
+               {{ __('buttons.new_customer') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="url('/graph')">
-                {{ __('Statistik') }}
+                {{ __('buttons.statistic') }}
             </x-responsive-nav-link>
         </div>
 
@@ -93,12 +93,12 @@
         <div class="pt-4 pb-1 border-t border-gray-200">
             <div class="px-4">
                 <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
+                <div class="font-medium text-sm text-gray-500">{{ Auth::user()->role }}</div>
             </div>
 
             <div class="mt-3 space-y-1">
                 <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
+                    {{ __('buttons.profile') }}
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->
@@ -107,7 +107,7 @@
                     <x-responsive-nav-link :href="route('logout')"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                        {{ __('Log Out') }}
+                        {{ __('buttons.logout') }}
                     </x-responsive-nav-link>
                 </form>
             </div>
