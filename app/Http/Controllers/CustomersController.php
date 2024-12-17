@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 /**
 * Customer Controller
-*
+* 
 * Indexing, Showing, Updating and Destroying Functions for existing entries
 * @access   public
 */

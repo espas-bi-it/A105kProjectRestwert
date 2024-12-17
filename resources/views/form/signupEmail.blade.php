@@ -1,4 +1,3 @@
-
 @switch($data->title)
     @case('Frau')
         Sehr geehrte Frau {{ $data->name }} {{ $data->surname }}

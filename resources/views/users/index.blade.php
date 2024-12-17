@@ -52,15 +52,15 @@
     <div id="modal-dialog" class="modal-dialog" style="margin: auto; position: relative; top: 50%; transform: translateY(-50%); width: 50%;">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="confirmModalLabel">Confirm Deletion</h5>
+                <h5 class="modal-title" id="confirmModalLabel">Löschung bestätigen</h5>
                 <button type="button" class="btn-close" id="closeModal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                Are you sure you want to delete this user? This action cannot be undone.
+                Sind Sie sicher, dass Sie diesen Benutzer löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden.
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" id="cancelDelete">Cancel</button>
-                <button type="button" id="confirmDelete" class="btn btn-danger">Delete</button>
+                <button type="button" class="btn btn-secondary" id="cancelDelete">Abbrechen</button>
+                <button type="button" id="confirmDelete" class="btn btn-danger">Löschen</button>
             </div>
         </div>
     </div>
