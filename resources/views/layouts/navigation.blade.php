@@ -1,4 +1,4 @@
-@vite(['resources/css/app.css', 'resources/js/app.js', 'public/bootstrap-4.0.0-dist/css/bootstrap.css'])
+@vite(['resources/css/app.css', 'resources/js/app.js'])
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100 navigation-sticky-item">
     <!-- Primary Navigation Menu -->
     <div class=" mx-auto px-4 sm:px-6 lg:px-8">

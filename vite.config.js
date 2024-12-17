@@ -7,7 +7,6 @@ export default defineConfig({
             input: [
                 'resources/css/app.css',
                 'resources/js/app.js',
-                'public/bootstrap-4.0.0-dist/css/bootstrap.css'
             ],
             refresh: true,
         }),
