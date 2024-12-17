@@ -6,6 +6,7 @@
         <table class="table">
             <thead>
                 <tr>
+                    <!-- Table Headers -->
                     <th class="col-1">Eingetragen</th>
                     <th class="col-1">Vorname</th>
                     <th class="col-1">Nachname</th>
@@ -17,7 +18,8 @@
                     <th class="col-1"></th>
                 </tr>
             </thead>
-            <tbody>
+        <tbody>
+                 <!-- Table Entries -->
                 @foreach ($customers as $customer)
                     <tr>
                         <td class="align-middle">{{ $customer->incorporated == 0 ? 'Nein' : 'Ja' }}</td>
@@ -39,6 +41,7 @@
                                 <button form="delete-form-{{ $customer->id }}" type="button" data-user-id="{{ $customer->id }}" class="open-modal" style="border: none; background: none;" title="Löschen">
                                     <img src="{{ asset('image/delete.png') }}" alt="Löschen" class="icon-img">
                                 </button>
+                                <!-- Delete Form -->
                                 <form id="delete-form-{{ $customer->id }}" action="{{ url('customers', ['id' => $customer->id]) }}" method="POST">
                                     @method('DELETE')
                                     @csrf

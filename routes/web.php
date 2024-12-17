@@ -24,13 +24,12 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::resource('/customers', CustomersController::class);
-    Route::get('/users/create', [UserManagementController::class, 'create'])->name('users.create'); // Show form
-    Route::post('/users', [UserManagementController::class, 'store'])->name('users.store'); // Handle form submission
-    Route::get('/users/index', [UserManagementController::class, 'index'])->name('users.index'); // Show user list
-    Route::get('/users/{user}', [UserManagementController::class, 'show'])->name('users.show'); // Show user list
-    Route::post('/users/{user}/update', [UserManagementController::class, 'update'])->name('users.update'); // Update user details
-    Route::post('/users/{user}/destroy', [UserManagementController::class, 'destroy'])->name('users.destroy'); // Delete user details
-
+    Route::post('/users', [UserManagementController::class, 'store'])->name('users.store');
+    Route::get('/users/index', [UserManagementController::class, 'index'])->name('users.index');
+    Route::get('/users/create', [UserManagementController::class, 'create'])->name('users.create'); 
+    Route::get('/users/{user}', [UserManagementController::class, 'show'])->name('users.show'); 
+    Route::post('/users/{user}/update', [UserManagementController::class, 'update'])->name('users.update');
+    Route::post('/users/{user}/destroy', [UserManagementController::class, 'destroy'])->name('users.destroy'); 
 
 });
 

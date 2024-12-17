@@ -12,7 +12,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th class="col-5">Name</th>
+                <th class="col-5">Anzeigename</th>
                 <th class="col-5">Email</th>
                 <th class="col-1">Rolle</th>
                 <th></th>

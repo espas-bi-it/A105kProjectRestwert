@@ -14,7 +14,6 @@
     <script>
         const ctx = document.getElementById('suggestionsChart').getContext('2d');
 
-        // Pass PHP data to JavaScript
         const data = @json(array_values($suggestionsData));
         const labels = @json(array_keys($suggestionsData));
 
