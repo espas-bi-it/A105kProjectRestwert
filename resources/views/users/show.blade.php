@@ -19,7 +19,7 @@
         <div class="form-row">
             <div class="col">
                 <label for="email"> {{ __('fields.email') }}*</label>
-                <input id="email" name="email" class="form-control" value="{{ $user->email }}" id="email" >
+                <input id="email" name="email" class="form-control" value="{{ $user->email }}">
             </div>
             <div class="col">
                 <label for="role"> {{ __('fields.role') }}*</label>
@@ -36,7 +36,7 @@
     <hr class="m-3">
     </hr>
 
-    @if(Auth::check() && Auth::user()->role === 'Admin' || Auth::check() && Auth::user()->role === 'TV')
+    @if(Auth::user()->hasAdvancedPermissions())
     <div class="container mt-1 my-3">
         <input class="btn btn-primary" type="submit" value="{{ __('buttons.save') }}"></input>
         <button class="btn"> <a type="" href="{{ URL::previous() }}">{{ __('buttons.back') }}</a></button>

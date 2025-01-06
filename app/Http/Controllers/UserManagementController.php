@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 
@@ -22,7 +21,7 @@ class UserManagementController extends Controller
     */
     public function create()
     {
-        $this->authorize('create', User::class); 
+        $this->authorize('hasPermission', User::class); 
 
         return view('users.create'); 
     }
@@ -39,7 +38,7 @@ class UserManagementController extends Controller
     */
     public function index(Request $request)
     {
-        $this->authorize('create', User::class);
+        $this->authorize('hasPermission', User::class);
 
         $validated = $request->validate([
             'search_input' => 'nullable|string|max:255',
@@ -61,10 +60,12 @@ class UserManagementController extends Controller
     * User is found by ID
     *
     * @param    string
-    * @return   users.show page with customer information
+    * @return   users.show page with users information
     */
     public function show(string $id)
     {
+        $this->authorize('hasPermission', User::class);
+
         $user = User::find($id);
 
         return view('users.show', compact('user'));
@@ -80,7 +81,7 @@ class UserManagementController extends Controller
     */
     public function update(Request $request, User $user)
     {
-        $this->authorize('create', User::class);
+        $this->authorize('hasPermission', User::class);
 
         $validated = $request->validate([
             'name' => 'required|string|max:255',
@@ -94,7 +95,8 @@ class UserManagementController extends Controller
             'role' => $validated['role'], 
         ]);
 
-        return redirect()->route('users.index')->with('success', 'User updated successfully!');
+        $message = $user->name . " updated successfully.";
+        return redirect()->route('users.index')->with('success', $message);
     }
 
     /**
@@ -109,7 +111,7 @@ class UserManagementController extends Controller
     */
     public function store(Request $request)
     {
-        $this->authorize('create', User::class); 
+        $this->authorize('hasPermission', User::class); 
 
         $validated = $request->validate([
             'name' => 'required|string|max:255',
@@ -125,6 +127,7 @@ class UserManagementController extends Controller
             'role' => $validated['role'],
         ]);
 
+
         return redirect()->route('users.index')->with('success', 'User created successfully!');
     }
 
@@ -136,8 +139,13 @@ class UserManagementController extends Controller
     */
     public function destroy(string $id)
     {
+        $this->authorize('hasPermission', User::class);
+
         $user = User::find($id);
+
+        $message = $user->name . " was successfully deleted.";
+
         $user->delete();
-        return redirect()->route('users.index')->with('success', 'User was successfully deleted!');
+        return redirect()->route('users.index')->with('success', $message);
     }
 }

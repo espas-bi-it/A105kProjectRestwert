@@ -3,6 +3,11 @@
 <div class="navbar-sticky-item">
     @include    ('components.sort-filter-settings')
 </div>
+@if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
 <table class="table">
     <thead>
         <tr>
@@ -36,7 +41,7 @@
                     <a href="{{ url('customers', ['id' => $customer->id]) }}">
                         <img src="{{ asset('image/edit.png') }}" alt="{{ __('buttons.edit') }}" class="icon-img" title="{{ __('buttons.edit') }}">
                     </a>
-                @if    (Auth::check() && Auth::user()->role === 'Admin')
+                @if(Auth::user()->hasAdminRights())
                     <!-- Delete Button -->
                     <button form="delete-form-{{ $customer->id }}" type="button" data-user-id="{{ $customer->id }}" class="open-modal" style="border: none; background: none;" title="{{ __('buttons.delete') }}">
                         <img src="{{ asset('image/delete.png') }}" alt="{{ __('buttons.delete') }}" class="icon-img">

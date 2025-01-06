@@ -3,20 +3,21 @@
 namespace App\Policies;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 /**
-* User Policy
-*
-* Determine if user may request a certain function
-*/
+ * User Policy
+ *
+ * Determine if user may request a certain function
+ */
 class UserPolicy
 {
     /**
     * Determine whether the user can create a new User.
     */
-    public function create(User $user)
+    public function hasPermission(User $user)
     {
-        return $user->role === 'Admin' || $user->role === 'TV' ; // Only admins can create users
+        return Auth::user()->hasAdvancedPermissions(); // Only admins can create and manage users
     }
 
     /**

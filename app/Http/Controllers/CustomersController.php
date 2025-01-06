@@ -3,18 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Nembie\IbanRule\ValidIban;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+
 
 /**
-* Customer Controller
-* 
-* Indexing, Showing, Updating and Destroying Functions for existing entries
-* @access   public
-*/
+ * Customer Controller
+ * 
+ * Indexing, Showing, Updating and Destroying Functions for existing entries
+ * @access   public
+ */
 class CustomersController extends Controller
 {
+    use AuthorizesRequests;
     /**
     * Display a listing of the customers based on params.
     *
@@ -94,6 +98,9 @@ class CustomersController extends Controller
     */
     public function update(Request $request, string $id)
     {
+
+        $this->authorize('hasPermission', User::class);
+
         // Find the customer or fail if not found
         $customer = Customer::findOrFail($id);
 
@@ -141,7 +148,10 @@ class CustomersController extends Controller
         // Save the updated record
         $customer->save();
 
-        return redirect('customers')->with('success', 'Customer updated successfully!');
+        $message = $customer->name . ' ' . $customer->surname . ' has been updated';
+
+
+        return redirect('customers')->with('success', $message);
     }
 
     /**
@@ -154,6 +164,8 @@ class CustomersController extends Controller
     */
     public function destroy(string $id)
     {
+        $this->authorize('hasPermission', User::class);
+
         // Find the customer by ID
         $customer = Customer::find($id);
 
@@ -188,12 +200,13 @@ class CustomersController extends Controller
                     'created_at' => $customer->created_at,
                     'updated_at' => $customer->updated_at,
                     ]);
+                    $message = $customer->name . ' ' . $customer->surname . ' has been deleted';
 
                     // Delete the customer from the original table
                     $customer->delete();
         }
 
-        return redirect('customers');
+        return redirect('customers')->with('success', $message);;
     }
 
 }

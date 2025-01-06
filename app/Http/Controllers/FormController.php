@@ -23,7 +23,7 @@ class FormController extends Controller
     *
     * @return   form.thankyou page
     */
-    public function index(Request $request)
+    public function index()
     {
         return view('form.thankyou');
     }

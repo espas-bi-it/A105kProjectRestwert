@@ -46,6 +46,26 @@ class User extends Authenticatable
         ];
     }
 
+
+    // Check if the user is an admin
+    public function hasAdminRights()
+    {
+        return $this->role === 'Admin';
+    }
+
+    // Check if the user is a TV
+    public function hasAdvancedPermissions()
+    {
+        return $this->role === 'TV' || $this->role === 'Admin';
+    }
+
+    // Check if the user is a Teilnehmer
+    public function hasBasicPermissions()
+    {
+        return $this->role === 'Teilnehmer';
+    }
+
+
     /**
     * Search Function
     *

@@ -45,7 +45,7 @@
                         <x-dropdown-link :href="route('profile.edit')">
                             {{ __('buttons.profile') }}
                         </x-dropdown-link>
-                        @if(Auth::check() && Auth::user()->role === 'Admin' || Auth::check() && Auth::user()->role === 'TV')
+                        @if(Auth::user()->hasAdvancedPermissions())
                         <!-- Benutzer verwalten -->
                          <x-dropdown-link :href="url('/users/index')">
                             {{ __('buttons.edit_user') }}

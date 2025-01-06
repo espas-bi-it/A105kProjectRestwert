@@ -23,12 +23,12 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useBootstrap();
 
-        Blade::directive('readonlyForBenutzer', function () {
-            return "<?php echo Auth::check() && Auth::user()->role === 'Teilnehmer' ? 'readonly' : ''; ?>";
+        Blade::directive('readonlyForBasicPermission', function () {
+            return "<?php echo Auth::user()->hasBasicPermissions() ? 'readonly' : ''; ?>";
             });
 
-        Blade::directive('disabledForBenutzer', function () {
-            return "<?php echo Auth::check() && Auth::user()->role === 'Teilnehmer' ? 'disabled'  : ''; ?>";
+        Blade::directive('disabledForBasicPermission', function () {
+            return "<?php echo Auth::user()->hasBasicPermissions() ? 'disabled'  : ''; ?>";
             });
     }
 }
