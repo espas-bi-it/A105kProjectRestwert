@@ -48,15 +48,21 @@ class User extends Authenticatable
 
 
     // Check if the user is an admin
-    public function hasAdminRights()
+    public function hasAdminPermissions()
     {
         return $this->role === 'Admin';
     }
 
-    // Check if the user is a TV
+    // Check if the user is a TV or Admin
     public function hasAdvancedPermissions()
     {
         return $this->role === 'TV' || $this->role === 'Admin';
+    }
+
+    // Check if the user is a TV or Admin
+    public function hasRestrictedPermissions()
+    {
+        return $this->role === 'TV';
     }
 
     // Check if the user is a Teilnehmer

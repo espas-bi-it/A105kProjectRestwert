@@ -27,6 +27,7 @@
                     <td class="align-middle">{{ $user->role }}</td>
                     <td class="align-middle">
                         <div style="display: flex; align-items: center; gap: 10px;">
+                            @if(Auth::user()->hasAdminPermissions() || $user->role != 'Admin')
                             <!-- Edit Button -->    
                             <a href="{{ url('users', ['id' => $user->id]) }}" title="{{ __('buttons.edit') }}">
                                 <img src="{{ asset('image/edit.png') }}" alt="{{ __('buttons.edit') }}" class="icon-img">
@@ -38,6 +39,7 @@
                             <form id="delete-form-{{ $user->id }}" action="{{ route('users.destroy', $user->id) }}" method="POST">
                                 @csrf
                             </form>
+                          @endif
                         </div>
                     </td>
                 </tr>

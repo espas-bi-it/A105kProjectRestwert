@@ -21,7 +21,9 @@
                             <input class="form-control border-gray-300 rounded" type="password" name="password" id="password" required>
                             <label for="role">{{ __('fields.role') }}</label>
                             <select class="form-control" name="role" id="role">
-                                <option value="admin">Admin</option>
+                                @if(Auth::user()->hasAdminPermissions()))
+                                    <option value="admin">Admin</option>
+                                @endif
                                 <option value="tv">TV</option>
                                 <option selected value="teilnehmer">Teilnehmer</option>
                             </select>

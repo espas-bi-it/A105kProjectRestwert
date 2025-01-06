@@ -99,7 +99,7 @@ class CustomersController extends Controller
     public function update(Request $request, string $id)
     {
 
-        $this->authorize('hasPermission', User::class);
+        $this->authorize('hasAdvancedPermissions', User::class);
 
         // Find the customer or fail if not found
         $customer = Customer::findOrFail($id);
@@ -164,7 +164,7 @@ class CustomersController extends Controller
     */
     public function destroy(string $id)
     {
-        $this->authorize('hasPermission', User::class);
+        $this->authorize('hasAdvancedPermissions', User::class);
 
         // Find the customer by ID
         $customer = Customer::find($id);

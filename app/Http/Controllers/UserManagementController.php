@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Facades\Auth;
+
 
 
 class UserManagementController extends Controller
@@ -21,7 +22,7 @@ class UserManagementController extends Controller
     */
     public function create()
     {
-        $this->authorize('hasPermission', User::class); 
+        $this->authorize('hasAdvancedPermissions', User::class); 
 
         return view('users.create'); 
     }
@@ -38,7 +39,7 @@ class UserManagementController extends Controller
     */
     public function index(Request $request)
     {
-        $this->authorize('hasPermission', User::class);
+        $this->authorize('hasAdvancedPermissions', User::class);
 
         $validated = $request->validate([
             'search_input' => 'nullable|string|max:255',
@@ -64,7 +65,7 @@ class UserManagementController extends Controller
     */
     public function show(string $id)
     {
-        $this->authorize('hasPermission', User::class);
+        $this->authorize('hasAdvancedPermissions', User::class);
 
         $user = User::find($id);
 
@@ -81,7 +82,14 @@ class UserManagementController extends Controller
     */
     public function update(Request $request, User $user)
     {
-        $this->authorize('hasPermission', User::class);
+        // Check permission via policy
+        if (strtolower($request['role']) == 'admin') {
+            $this->authorize('hasAdminPermissions', User::class);
+        }
+        else
+        {
+            $this->authorize('hasAdvancedPermissions', User::class);
+        }
 
         $validated = $request->validate([
             'name' => 'required|string|max:255',
@@ -111,7 +119,12 @@ class UserManagementController extends Controller
     */
     public function store(Request $request)
     {
-        $this->authorize('hasPermission', User::class); 
+        // Check permission via policy
+        if (strtolower($request['role']) == 'admin') {
+            $this->authorize('hasAdminPermissions', User::class);
+        } else {
+            $this->authorize('hasAdvancedPermissions', User::class);
+        }
 
         $validated = $request->validate([
             'name' => 'required|string|max:255',
@@ -139,7 +152,7 @@ class UserManagementController extends Controller
     */
     public function destroy(string $id)
     {
-        $this->authorize('hasPermission', User::class);
+        $this->authorize('hasAdvancedPermissions', User::class);
 
         $user = User::find($id);
 

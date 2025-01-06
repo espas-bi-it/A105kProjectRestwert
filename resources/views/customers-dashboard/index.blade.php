@@ -41,7 +41,7 @@
                     <a href="{{ url('customers', ['id' => $customer->id]) }}">
                         <img src="{{ asset('image/edit.png') }}" alt="{{ __('buttons.edit') }}" class="icon-img" title="{{ __('buttons.edit') }}">
                     </a>
-                @if(Auth::user()->hasAdminRights())
+                @if(Auth::user()->hasAdminPermissions())
                     <!-- Delete Button -->
                     <button form="delete-form-{{ $customer->id }}" type="button" data-user-id="{{ $customer->id }}" class="open-modal" style="border: none; background: none;" title="{{ __('buttons.delete') }}">
                         <img src="{{ asset('image/delete.png') }}" alt="{{ __('buttons.delete') }}" class="icon-img">

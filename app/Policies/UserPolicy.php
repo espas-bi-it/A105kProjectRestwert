@@ -15,9 +15,20 @@ class UserPolicy
     /**
     * Determine whether the user can create a new User.
     */
-    public function hasPermission(User $user)
+
+    public function hasAdminPermissions(User $user)
     {
-        return Auth::user()->hasAdvancedPermissions(); // Only admins can create and manage users
+        return Auth::user()->hasAdminPermissions(); // Check for admins rights
+    }
+
+    public function hasAdvancedPermissions(User $user)
+    {
+        return Auth::user()->hasAdvancedPermissions(); // Check for admins and TV permissions
+    }
+
+    public function hasRestrictedPermissions(User $user)
+    {
+        return Auth::user()->hasRestrictedPermissions(); // Check for TV permissions
     }
 
     /**

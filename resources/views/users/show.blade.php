@@ -24,9 +24,11 @@
             <div class="col">
                 <label for="role"> {{ __('fields.role') }}*</label>
                 <select id="role" name="role" class="form-control">
-                    <option value="Admin" {{ $user->role === "Admin" ? 'selected' : '' }}>Admin</option>
-                    <option value="TV" {{ $user->role === "TV" ? 'selected' : '' }}>TV</option>
-                    <option value="Teilnehmer" {{ $user->role === "Teilnehmer" ? 'selected' : '' }}>Teilnehmer</option>
+                    @if(Auth::user()->hasAdminPermissions()))
+                        <option value="admin" {{ $user->role === "Admin" ? 'selected' : '' }} >Admin</option>
+                    @endif
+                    <option value="tv" {{ $user->role === "TV" ? 'selected' : '' }}>TV</option>
+                    <option value="teilnehmer" {{ $user->role === "Teilnehmer" ? 'selected' : '' }}>Teilnehmer</option>
                 </select>
             </div>
         </div>
