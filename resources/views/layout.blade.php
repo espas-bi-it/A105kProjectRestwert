@@ -22,7 +22,7 @@
     </body>
 
 </x-app-layout>
-@if (request()->is('customers'))
+@if (request()->is('customers') || request()->is('users/index'))
 	<div class="pagination-sticky-item" >
 		@yield('pagination')
 	</div>
