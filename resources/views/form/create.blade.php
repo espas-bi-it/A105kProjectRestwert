@@ -181,26 +181,27 @@
                 </div>
                 <div class="form-check">
                     <!-- Mündliche Empfehlung -->
-                    <input class="form-check-input" type="checkbox" name="oral_suggestion" id="oral_suggestion"
-                        value={{ old('oral_suggestion') ? 'Ja' : 'Nein' }} {{ old('oral_suggestion') == 'Nein' ? 'checked' : '' }}>
+                   <input class="form-check-input" type="checkbox" name="oral_suggestion" id="oral_suggestion"
+                        value="1" {{ old('oral_suggestion') ? 'checked' : '' }}>
                     <label class="form-check-label" for="oral_suggestion"> {{ __('fields.oral_suggestion') }}</label>
                 </div>
                 <div class="form-check">
                     <!-- Ricardo -->
-                    <input class="form-check-input" type="checkbox" name="ricardo_suggestion" id="ricardo_suggestion"
-                        value={{ old('ricardo_suggestion') ? 'Ja' : 'Nein' }} {{ old('ricardo_suggestion') == 'Nein' ? 'checked' : '' }}>
+                   <input class="form-check-input" type="checkbox" name="ricardo_suggestion" id="ricardo_suggestion"
+                        value="1" {{ old('ricardo_suggestion') ? 'checked' : '' }}>
                     <label class="form-check-label" for="ricardo_suggestion"> {{ __('fields.ricardo_suggestion') }}</label>
+
                 </div>
                 <div class="form-check">
                     <!-- Social Media -->
-                    <input class="form-check-input" type="checkbox" name="socialmedia_suggestion"
-                        id="socialmedia_suggestion" value={{ old('socialmedia_suggestion') ? 'Ja' : 'Nein' }} {{ old('socialmedia_suggestion') == 'Nein' ? 'checked' : '' }}>
+                   <input class="form-check-input" type="checkbox" name="socialmedia_suggestion" id="socialmedia_suggestion"
+                        value="1" {{ old('socialmedia_suggestion') ? 'checked' : '' }}>
                     <label class="form-check-label" for="socialmedia_suggestion"> {{ __('fields.socialmedia_suggestion') }}</label>
                 </div>
                 <div class="form-check">
                     <!-- Flyer -->
-                    <input class="form-check-input" type="checkbox" name="flyer_suggestion" id="flyer_suggestion"
-                        value={{ old('flyer_suggestion') ? 'Ja' : 'Nein' }} {{ old('flyer_suggestion') == 'Nein' ? 'checked' : '' }}>
+                   <input class="form-check-input" type="checkbox" name="flyer_suggestion" id="flyer_suggestion"
+                        value="1" {{ old('flyer_suggestion') ? 'checked' : '' }}>
                     <label class="form-check-label" for="flyer_suggestion"> {{ __('fields.flyer_suggestion') }}</label>
                 </div>
 

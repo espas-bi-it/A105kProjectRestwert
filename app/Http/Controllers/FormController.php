@@ -19,7 +19,7 @@ class FormController extends Controller
 {
 
     /**
-    * Default generated index.
+    * Thank you page after signing up.
     *
     * @return   form.thankyou page
     */
@@ -55,7 +55,12 @@ class FormController extends Controller
     {
         $request->merge([
             'iban' => str_replace(' ', '', $request->iban), 
-            'phone' => str_replace(' ', '', $request->phone),  
+            'phone' => str_replace(' ', '', $request->phone),
+            // Convert suggestion inputs to booleans
+            'oral_suggestion' => $request->has('oral_suggestion'),
+            'ricardo_suggestion' => $request->has('ricardo_suggestion'),
+            'socialmedia_suggestion' => $request->has('socialmedia_suggestion'),
+            'flyer_suggestion' => $request->has('flyer_suggestion'),
         ]);
 
         $validatedData = $request->validate([
@@ -107,31 +112,13 @@ class FormController extends Controller
         $customer->alt_zip = $validatedData['alt_zip'];
         $customer->alt_city = $validatedData['alt_city'];
 
-        if (isset($validatedData['oral_suggestion'])) {
-            $customer->oral_suggestion = "Ja";
-        } else {
-            $customer->oral_suggestion = "Nein";
-        }
+        // Store suggestions as booleans
+        $customer->oral_suggestion = $validatedData['oral_suggestion'];
+        $customer->ricardo_suggestion = $validatedData['ricardo_suggestion'];
+        $customer->socialmedia_suggestion = $validatedData['socialmedia_suggestion'];
+        $customer->flyer_suggestion = $validatedData['flyer_suggestion'];
 
-        if (isset($validatedData['ricardo_suggestion'])) {
-            $customer->ricardo_suggestion = "Ja";
-        } else {
-            $customer->ricardo_suggestion = "Nein";
-        }
-
-        if (isset($validatedData['socialmedia_suggestion'])) {
-            $customer->socialmedia_suggestion = "Ja";
-        } else {
-            $customer->socialmedia_suggestion = "Nein";
-        }
-
-        if (isset($validatedData['flyer_suggestion'])) {
-            $customer->flyer_suggestion = "Ja";
-        } else {
-            $customer->flyer_suggestion = "Nein";
-        }
-
-        $customer->incorporated = "0";
+        $customer->incorporated = false;
 
         $customer->save();
 

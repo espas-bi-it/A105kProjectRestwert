@@ -8,6 +8,14 @@
         {{ session('success') }}
     </div>
 @endif
+
+@if ($errors->any())
+    <div class="alert alert-danger mt-2">
+        @foreach ($errors->all() as $error)
+            {{ $error }}
+        @endforeach
+    </div>
+@endif
 <table class="table">
     <thead>
         <tr>

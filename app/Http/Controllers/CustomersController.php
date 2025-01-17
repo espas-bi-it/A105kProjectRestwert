@@ -75,10 +75,10 @@ class CustomersController extends Controller
     public function showSuggestionsGraph()
     {
         $suggestionsData = [
-            __('fields.oral_suggestion') => Customer::where('oral_suggestion', 'LIKE', '%Ja%')->count(),
-            __('fields.ricardo_suggestion') => Customer::where('ricardo_suggestion', 'LIKE', '%Ja%')->count(),
-            __('fields.socialmedia_suggestion') => Customer::where('socialmedia_suggestion', 'LIKE', '%Ja%')->count(),
-            __('fields.flyer_suggestion') => Customer::where('flyer_suggestion', 'LIKE', '%Ja%')->count(),
+            __('fields.oral_suggestion') => Customer::where('oral_suggestion', true)->count(),
+            __('fields.ricardo_suggestion') => Customer::where('ricardo_suggestion', true)->count(),
+            __('fields.socialmedia_suggestion') => Customer::where('socialmedia_suggestion', true)->count(),
+            __('fields.flyer_suggestion') => Customer::where('flyer_suggestion', true)->count(),
         ];
 
         return view('customers-dashboard.graph', compact('suggestionsData'));
@@ -200,13 +200,17 @@ class CustomersController extends Controller
                     'created_at' => $customer->created_at,
                     'updated_at' => $customer->updated_at,
                     ]);
-                    $message = $customer->name . ' ' . $customer->surname . ' has been deleted';
 
-                    // Delete the customer from the original table
-                    $customer->delete();
+            $message = $customer->name . ' ' . $customer->surname . ' has been deleted';
+
+            // Delete the customer from the original table
+            $customer->delete();
+
+            return redirect('customers')->with('success', $message);
         }
-
-        return redirect('customers')->with('success', $message);;
+        else
+        {
+            return redirect('customers')->with('error', 'Specified entry could not be found.');
+        }
     }
-
 }
