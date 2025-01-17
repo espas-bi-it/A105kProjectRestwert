@@ -35,15 +35,15 @@
     <!-- Table Entries -->
     @foreach ($customers as $customer)
         <tr>
-            <td class="align-middle">{{ $customer->incorporated == 0 ? __('fields.no') : __('fields.yes') }}</td>
-            <td class="align-middle">{{ $customer->name }}</td>
-            <td class="align-middle">{{ $customer->surname }}</td>
-            <td class="align-middle">{{ $customer->address }}</td>
-            <td class="align-middle">{{ $customer->zip }}</td>
-            <td class="align-middle">{{ $customer->city }}</td>
-            <td class="align-middle">{{ $customer->email }}</td>
-            <td class="align-middle">{{ $customer->created_at->format('d. M. Y') }}</td>
-            <td class="align-middle">
+            <td class="align-middle custom-ellipsis">{{ $customer->incorporated == 0 ? __('fields.no') : __('fields.yes') }}</td>
+            <td class="align-middle custom-ellipsis">{{ $customer->name }}</td>
+            <td class="align-middle custom-ellipsis">{{ $customer->surname }}</td>
+            <td class="align-middle custom-ellipsis">{{ $customer->address }}</td>
+            <td class="align-middle custom-ellipsis">{{ $customer->zip }}</td>
+            <td class="align-middle custom-ellipsis">{{ $customer->city }}</td>
+            <td class="align-middle custom-ellipsis">{{ $customer->email }}</td>
+            <td class="align-middle custom-ellipsis">{{ $customer->created_at->format('d. M. Y') }}</td>
+            <td class="align-middle custom-ellipsis">
                 <div style="display: flex; align-items: center; gap: 10px;">
                     <!-- Edit Button -->
                     <a href="{{ url('customers', ['id' => $customer->id]) }}">

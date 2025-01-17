@@ -23,67 +23,67 @@
             <div class="col">
                 <!-- Firma -->
                 <label for="company"> {{ __('fields.company') }}</label>
-                <input name="company" class="form-control" id="company" value="{{ $customer->company }}"  @readonlyForBasicPermission >
+                <input maxlength="50" name="company" class="form-control" id="company" value="{{ $customer->company }}"  @readonlyForBasicPermission >
             </div>
         </div>
         <div class="form-row">
             <div class="col">
                 <!-- Vorname -->
                 <label for="name"> {{ __('fields.name') }}*</label>
-                <input name="name" class="form-control" value="{{ $customer->name }}" id="name" required  @readonlyForBasicPermission >
+                <input maxlength="50" name="name" class="form-control" value="{{ $customer->name }}" id="name" required  @readonlyForBasicPermission >
             </div>
             <div class="col">
                 <!-- Nachname -->
                 <label for="surname"> {{ __('fields.surname') }}*</label>
-                <input name="surname" class="form-control" value="{{ $customer->surname }}" id="surname" required @readonlyForBasicPermission >
+                <input maxlength="50" name="surname" class="form-control" value="{{ $customer->surname }}" id="surname" required @readonlyForBasicPermission >
             </div>
         </div>
         <div class="form-row">
             <div class="col">
                 <!-- Adresse -->
                 <label for="address"> {{ __('fields.address') }}*</label>
-                <input name="address" class="form-control" value="{{ $customer->address }}" id="address" required @readonlyForBasicPermission >
+                <input maxlength="50" name="address" class="form-control" value="{{ $customer->address }}" id="address" required @readonlyForBasicPermission >
             </div>
             <div class="col">
                 <!-- Postfach -->
                 <label for="po_box"> {{ __('fields.po_box') }}</label>
-                <input name="po_box" class="form-control" value="{{ $customer->po_box }}" id="po_box" @readonlyForBasicPermission >
+                <input maxlength="50" name="po_box" class="form-control" value="{{ $customer->po_box }}" id="po_box" @readonlyForBasicPermission >
             </div>
         </div>
         <div class="form-row">
             <div class="col">
                 <!-- PLZ -->
                 <label for="zip"> {{ __('fields.zip') }}*</label>
-                <input name="zip" class="form-control" value="{{ $customer->zip }}" id="zip" required @readonlyForBasicPermission >
+                <input maxlength="10" name="zip" class="form-control" value="{{ $customer->zip }}" id="zip" required @readonlyForBasicPermission >
             </div>
             <div class="col">
                 <!-- Ort -->
                 <label for="city"> {{ __('fields.city') }}*</label>
-                <input name="city" class="form-control" value="{{ $customer->city }}" id="city" required @readonlyForBasicPermission >
+                <input maxlength="50" name="city" class="form-control" value="{{ $customer->city }}" id="city" required @readonlyForBasicPermission >
             </div>
         </div>
         <div class="form-row">
             <div class="col">
                 <!-- Email -->
                 <label for="email"> {{ __('fields.email') }}*</label>
-                <input name="email" class="form-control" value="{{ $customer->email }}" id="email" required @readonlyForBasicPermission >
+                <input maxlength="50" name="email" class="form-control" value="{{ $customer->email }}" id="email" required @readonlyForBasicPermission >
             </div>
             <div class="col">
                 <!-- Telefon -->
                 <label for="phone"> {{ __('fields.phone') }}*</label>
-                <input name="phone" class="form-control" value="{{ $customer->phone }}" id="phone" required @readonlyForBasicPermission >
+                <input maxlength="20" name="phone" class="form-control" value="{{ $customer->phone }}" id="phone" required @readonlyForBasicPermission >
             </div>
         </div>
         <div class="form-row">
             <div class="col">
                 <!-- IBAN -->
                 <label for="iban"> {{ __('fields.iban') }}*</label>
-                <input name="iban" class="form-control" value="{{ $customer->iban }}" id="iban" required @readonlyForBasicPermission >
+                <input maxlength="34" name="iban" class="form-control" value="{{ $customer->iban }}" id="iban" required @readonlyForBasicPermission >
             </div>
             <div class="col">
                 <!-- Bankname -->
                 <label for="bankname"> {{ __('fields.bankname') }}*</label>
-                <input name="bankname" class="form-control" value="{{ $customer->bankname }}" id="bankname" required @readonlyForBasicPermission >
+                <input maxlength="50" name="bankname" class="form-control" value="{{ $customer->bankname }}" id="bankname" required @readonlyForBasicPermission >
             </div>
         </div>
     </div>
@@ -111,31 +111,31 @@
                 <div class="col">
                     <!-- Alternativer Vorname -->
                     <label for="alt_name"> {{ __('fields.name') }}</label>
-                    <input name="alt_name" class="form-control" value="{{ $customer->alt_name }}" id="alt_name" @readonlyForBasicPermission >
+                    <input maxlength="50" name="alt_name" class="form-control" value="{{ $customer->alt_name }}" id="alt_name" @readonlyForBasicPermission >
                 </div>
                 <div class="col">
                     <!-- Alternativer Nachname -->
                     <label for="alt_surname"> {{ __('fields.surname') }}</label>
-                    <input name="alt_surname" class="form-control" value="{{ $customer->alt_surname }}" id="alt_surname" @readonlyForBasicPermission >
+                    <input maxlength="50" name="alt_surname" class="form-control" value="{{ $customer->alt_surname }}" id="alt_surname" @readonlyForBasicPermission >
                 </div>
             </div>
             <div class="form-row">
                 <div class="col">
                     <!-- Alternative Adresse -->
                     <label for="alt_address"> {{ __('fields.address') }}</label>
-                    <input name="alt_address" class="form-control" value="{{ $customer->alt_address }}" id="alt_address" @readonlyForBasicPermission >
+                    <input maxlength="50" name="alt_address" class="form-control" value="{{ $customer->alt_address }}" id="alt_address" @readonlyForBasicPermission >
                 </div>
             </div>
             <div class="form-row">
                 <div class="col">
                     <!-- Alternative PLZ -->
                     <label for="alt_zip"> {{ __('fields.zip') }}</label>
-                    <input name="alt_zip" class="form-control" value="{{ $customer->alt_zip }}" id="alt_zip" @readonlyForBasicPermission >
+                    <input maxlength="10" name="alt_zip" class="form-control" value="{{ $customer->alt_zip }}" id="alt_zip" @readonlyForBasicPermission >
                 </div>
                 <div class="col">
                     <!-- Alternativer Ort -->
                     <label for="alt_city"> {{ __('fields.city') }}</label>
-                    <input name="alt_city" class="form-control" value="{{ $customer->alt_city }}" id="alt_city" @readonlyForBasicPermission >
+                    <input maxlength="50" name="alt_city" class="form-control" value="{{ $customer->alt_city }}" id="alt_city" @readonlyForBasicPermission >
                 </div>
             </div>
             <div class="mt-2">

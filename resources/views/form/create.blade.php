@@ -45,7 +45,7 @@
                     <div class="col  my-1">
                          <!-- Firma -->
                         <label for="company">{{ __('fields.company') }}</label>
-                        <input name="company" class="form-control" id="company" value="{{ old('company') }}">
+                        <input maxlength="50" name="company" class="form-control" id="company" value="{{ old('company') }}">
                     </div>
                 </div>
 
@@ -53,12 +53,12 @@
                     <div class="col  my-1">
                          <!-- Vorname -->
                         <label for="name"> {{ __('fields.name') }}*</label>
-                        <input name="name" class="form-control" id="name" value="{{ old('name') }}" required>
+                        <input maxlength="50" name="name" class="form-control" id="name" value="{{ old('name') }}" required>
                     </div>
                     <div class="col  my-1">
                          <!-- Nachname -->
                         <label for="surname"> {{ __('fields.surname') }}*</label>
-                        <input name="surname" class="form-control" id="surname" value="{{ old('surname') }}" required>
+                        <input maxlength="50" name="surname" class="form-control" id="surname" value="{{ old('surname') }}" required>
                     </div>
                 </div>
 
@@ -66,12 +66,12 @@
                     <div class="col  my-1">
                          <!-- Adresse -->
                         <label for="address"> {{ __('fields.address') }}*</label>
-                        <input name="address" class="form-control" id="address" value="{{ old('address') }}" required>
+                        <input maxlength="50" name="address" class="form-control" id="address" value="{{ old('address') }}" required>
                     </div>
                     <div class="col  my-1">
                          <!-- Postfach -->
                         <label for="po_box"> {{ __('fields.po_box') }}</label>
-                        <input name="po_box" class="form-control" id="po_box" value="{{ old('po_box') }}">
+                        <input maxlength="50" name="po_box" class="form-control" id="po_box" value="{{ old('po_box') }}">
                     </div>
                 </div>
 
@@ -79,12 +79,12 @@
                     <div class="col  my-1">
                          <!-- PLZ -->
                         <label for="zip"> {{ __('fields.zip') }}*</label>
-                        <input name="zip" class="form-control" id="zip" value="{{ old('zip') }}" required>
+                        <input maxlength="10" name="zip" class="form-control" id="zip" value="{{ old('zip') }}" required>
                     </div>
                     <div class="col  my-1">
                          <!-- Ort -->
                         <label for="city"> {{ __('fields.city') }}*</label>
-                        <input name="city" class="form-control" id="city" value="{{ old('city') }}" required>
+                        <input maxlength="50" name="city" class="form-control" id="city" value="{{ old('city') }}" required>
                     </div>
                 </div>
 
@@ -92,24 +92,24 @@
                     <div class="col  my-1">
                          <!-- Email -->
                         <label for="email"> {{ __('fields.email') }}*</label>
-                        <input name="email" class="form-control" id="email" value="{{ old('email') }}" required>
+                        <input maxlength="50" name="email" class="form-control" id="email" value="{{ old('email') }}" required>
                     </div>
                     <div class="col  my-1">
                          <!-- Telefon -->
                         <label for="phone"> {{ __('fields.phone') }}*</label>
-                        <input name="phone" class="form-control" id="phone" value="{{ old('phone') }}" required>
+                        <input maxlength="20" name="phone" class="form-control" id="phone" value="{{ old('phone') }}" required>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col  my-1">
                          <!-- IBAN -->
                         <label for="iban"> {{ __('fields.iban') }}*</label>
-                        <input name="iban" class="form-control" id="iban" value="{{ old('iban') }}" required>
+                        <input maxlength="34" name="iban" class="form-control" id="iban" value="{{ old('iban') }}" required>
                     </div>
                     <div class="col  my-1">
                          <!-- Bankname -->
                         <label for="bankname"> {{ __('fields.bankname') }}*</label>
-                        <input name="bankname" class="form-control" id="bankname" value="{{ old('bankname') }}" required>
+                        <input maxlength="50" name="bankname" class="form-control" id="bankname" value="{{ old('bankname') }}" required>
                     </div>
                 </div>
 
@@ -141,12 +141,12 @@
                         <div class="col  my-1">
                             <!-- Alternativer Vorname -->
                             <label for="alt_name"> {{ __('fields.name') }}</label>
-                            <input name="alt_name" class="form-control" id="alt_name" value="{{ old('alt_name') }}">
+                            <input maxlength="50" name="alt_name" class="form-control" id="alt_name" value="{{ old('alt_name') }}">
                         </div>
                         <div class="col  my-1">
                             <!-- Alternativer Nachname -->
                             <label for="alt_surname"> {{ __('fields.surname') }}</label>
-                            <input name="alt_surname" class="form-control" id="alt_surname"
+                            <input maxlength="50" name="alt_surname" class="form-control" id="alt_surname"
                                 value="{{ old('alt_surname') }}">
                         </div>
                     </div>
@@ -154,20 +154,20 @@
                         <div class="col  my-1">
                             <!-- Alternative Adresse -->
                             <label for="alt_address"> {{ __('fields.address') }}</label>
-                            <input name="alt_address" class="form-control" id="alt_address"
+                            <input maxlength="50" name="alt_address" class="form-control" id="alt_address"
                                 value="{{ old('alt_address') }}">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="col  my-1">
                             <!-- Alternative PLZ -->
-                            <label for="alt_zip"> {{ __('fields.zip') }}</label>
+                            <label maxlength="10" for="alt_zip"> {{ __('fields.zip') }}</label>
                             <input name="alt_zip" class="form-control" id="alt_zip" value="{{ old('alt_zip') }}">
                         </div>
                         <div class="col  my-1">
                             <!-- Alternativer Ort -->
                             <label for="alt_city"> {{ __('fields.city') }}</label>
-                            <input name="alt_city" class="form-control" id="alt_city" value="{{ old('alt_city') }}">
+                            <input maxlength="50" name="alt_city" class="form-control" id="alt_city" value="{{ old('alt_city') }}">
                         </div>
                     </div>
                 </div>

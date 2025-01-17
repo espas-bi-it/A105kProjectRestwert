@@ -42,6 +42,8 @@ return [
     'password' => 'Mot de passe',
     'yes' => 'Oui',
     'no' => 'Non',
+    'user_name' => 'Nom d\'utilisateur',
+
 
 
 ];

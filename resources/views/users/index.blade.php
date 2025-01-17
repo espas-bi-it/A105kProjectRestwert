@@ -12,7 +12,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th class="col-5">{{ __('fields.name') }}</th>
+                <th class="col-5">{{ __('fields.user_name') }}</th>
                 <th class="col-5">{{ __('fields.email') }}</th>
                 <th class="col-1">{{ __('fields.role') }}</th>
                 <th></th>
@@ -22,9 +22,9 @@
             @foreach($users as $user)
                 @if ($user->email !== Auth::user()->email)
                 <tr>
-                    <td class="align-middle">{{ $user->name }}</td>
-                    <td class="align-middle">{{ $user->email }}</td>
-                    <td class="align-middle">{{ $user->role }}</td>
+                    <td class="align-middle custom-ellipsis">{{ $user->name }}</td>
+                    <td class="align-middle custom-ellipsis">{{ $user->email }}</td>
+                    <td class="align-middle custom-ellipsis">{{ $user->role }}</td>
                     <td class="align-middle">
                         <div style="display: flex; align-items: center; gap: 10px;">
                             @if(Auth::user()->hasAdminPermissions() || $user->role != 'Admin')

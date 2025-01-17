@@ -1712,9 +1712,9 @@ pre code {
 
 .table th,
 .table td {
-  padding: 0.75rem;
-  vertical-align: top;
-  border-top: 1px solid #dee2e6;
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
 }
 
 .table thead th {
@@ -6097,7 +6097,7 @@ button.close {
 }
 
 .align-middle {
-  vertical-align: middle !important;
+    vertical-align: middle !important;
 }
 
 .align-bottom {
@@ -9001,10 +9001,11 @@ a.text-dark:hover, a.text-dark:focus {
   .table {
     border-collapse: collapse !important;
   }
-  .table td,
-  .table th {
-    background-color: #fff !important;
-  }
+    .table td,
+    .table th {
+        background-color: #fff !important;
+
+    }
   .table-bordered th,
   .table-bordered td {
     border: 1px solid #ddd !important;
@@ -9051,5 +9052,11 @@ a.text-dark:hover, a.text-dark:focus {
     border: none;
     font-size: 1.5rem;
     cursor: pointer;
+}
+.custom-ellipsis {
+    white-space: nowrap; /* Prevents text from wrapping */
+    overflow: hidden; /* Hides the text that overflows */
+    text-overflow: ellipsis; /* Adds an ellipsis when the text is too long */
+    max-width: 150px; /* Set max width for table cells (adjust as needed) */
 }
 /*# sourceMappingURL=bootstrap.css.map */

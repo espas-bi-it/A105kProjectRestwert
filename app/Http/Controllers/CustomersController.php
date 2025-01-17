@@ -214,4 +214,78 @@ class CustomersController extends Controller
             return redirect('customers')->with('error', 'Specified entry could not be found.');
         }
     }
+
+    /**
+     * Transfer a customer to another application (ERP system).
+     *
+     * This is the foundation for future builds.
+     * 
+     * @param  string  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function transfer(string $id)
+    {
+        // Ensure user has necessary permissions
+        $this->authorize('hasAdvancedPermissions', User::class);
+
+        // Find the customer by ID
+        $customer = Customer::find($id);
+
+        if (!$customer) {
+            // Handle case where the customer does not exist
+            return redirect()->route('customers.index')->with('error', 'Customer not found.');
+        }
+
+        // Prepare data for transfer - could vary based on the ERP system
+        $customerData = [
+            'title' => $customer->title,
+            'company' => $customer->company,
+            'name' => $customer->name,
+            'surname' => $customer->surname,
+            'address' => $customer->address,
+            'po_box' => $customer->po_box,
+            'zip' => $customer->zip,
+            'city' => $customer->city,
+            'email' => $customer->email,
+            'phone' => $customer->phone,
+            'iban' => $customer->iban,
+            'bankname' => $customer->bankname,
+            'alt_title' => $customer->alt_title,
+            'alt_name' => $customer->alt_name,
+            'alt_surname' => $customer->alt_surname,
+            'alt_address' => $customer->alt_address,
+            'alt_zip' => $customer->alt_zip,
+            'alt_city' => $customer->alt_city,
+            'oral_suggestion' => $customer->oral_suggestion,
+            'ricardo_suggestion' => $customer->ricardo_suggestion,
+            'socialmedia_suggestion' => $customer->socialmedia_suggestion,
+            'flyer_suggestion' => $customer->flyer_suggestion,
+            // Add any other relevant data
+        ];
+
+        // For now, we simulate an external API transfer (ERP system)
+        // Replace with actual external system URL and necessary headers
+        try {
+            $response = Http::post('https://external-erp-system.example.com/api/transfer', $customerData);
+
+            if ($response->successful()) {
+                // If the API returns success, log and return success message
+                Log::info('Customer transferred successfully.', ['customer_id' => $customer->id]);
+
+                // Optionally, you can add the transferred customer status or other information to your database
+
+                return redirect()->route('customers.index')->with('success', 'Customer successfully transferred.');
+            } else {
+                // Handle failure in transferring (e.g., bad response from API)
+                Log::error('Failed to transfer customer.', ['customer_id' => $customer->id, 'response' => $response->body()]);
+
+                return redirect()->route('customers.index')->with('error', 'Failed to transfer customer.');
+            }
+        } catch (\Exception $e) {
+            // Catch any exceptions, such as connection errors or timeouts
+            Log::error('Error during customer transfer.', ['customer_id' => $customer->id, 'error' => $e->getMessage()]);
+
+            return redirect()->route('customers.index')->with('error', 'Error during transfer process.');
+        }
+    }
 }
