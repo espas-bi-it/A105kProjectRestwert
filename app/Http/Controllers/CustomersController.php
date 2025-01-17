@@ -170,7 +170,7 @@ class CustomersController extends Controller
         $customer = Customer::find($id);
 
         if ($customer) {
-            // Move the customer's data to the 'customers_archive' table
+            // Raw insert the customer's data to the 'customers_archive' table
             \DB::table('customers_archive')->insert([
                     'id' => $customer->id,
                     'title' => $customer->title,
@@ -196,12 +196,13 @@ class CustomersController extends Controller
                     'socialmedia_suggestion' => $customer->socialmedia_suggestion,
                     'flyer_suggestion' => $customer->flyer_suggestion,
                     'incorporated' => $customer->incorporated,
-                    'updated_by' => $customer->updated_by,
                     'created_at' => $customer->created_at,
-                    'updated_at' => $customer->updated_at,
+                    'updated_by' => Auth::user()->name,
+                    'updated_at' => now(),
                     ]);
 
             $message = $customer->name . ' ' . $customer->surname . ' has been deleted';
+            // Get the currently logged-in user's name
 
             // Delete the customer from the original table
             $customer->delete();
