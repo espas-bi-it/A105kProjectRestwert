@@ -35,12 +35,13 @@ Route::middleware('auth')->group(function () {
    
 });
 
-
 Route::get('/locale/{lang}', function ($lang) {
-    if (in_array($lang, ['en', 'de', 'fr'])) { // Add more languages if needed
+    // Ensure the selected language is valid
+    if (in_array($lang, ['en', 'de', 'fr'])) {
         App::setLocale($lang);
-        Session::put('locale', $lang);
+        Session::put('locale', $lang); // Store the selected language in the session
     }
+
     return redirect()->back(); // Redirect back to the previous page
 })->name('locale.switch');
 
