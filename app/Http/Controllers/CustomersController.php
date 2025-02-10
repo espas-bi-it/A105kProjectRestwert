@@ -74,11 +74,18 @@ class CustomersController extends Controller
     */
     public function showSuggestionsGraph()
     {
+        $suggestionsData = Customer::selectRaw("
+            COUNT(CASE WHEN oral_suggestion = true THEN 1 END) AS oral_suggestion,
+            COUNT(CASE WHEN ricardo_suggestion = true THEN 1 END) AS ricardo_suggestion,
+            COUNT(CASE WHEN socialmedia_suggestion = true THEN 1 END) AS socialmedia_suggestion,
+            COUNT(CASE WHEN flyer_suggestion = true THEN 1 END) AS flyer_suggestion
+        ")->first();
+
         $suggestionsData = [
-            __('fields.oral_suggestion') => Customer::where('oral_suggestion', true)->count(),
-            __('fields.ricardo_suggestion') => Customer::where('ricardo_suggestion', true)->count(),
-            __('fields.socialmedia_suggestion') => Customer::where('socialmedia_suggestion', true)->count(),
-            __('fields.flyer_suggestion') => Customer::where('flyer_suggestion', true)->count(),
+            __('fields.oral_suggestion') => $suggestionsData->oral_suggestion,
+            __('fields.ricardo_suggestion') => $suggestionsData->ricardo_suggestion,
+            __('fields.socialmedia_suggestion') => $suggestionsData->socialmedia_suggestion,
+            __('fields.flyer_suggestion') => $suggestionsData->flyer_suggestion,
         ];
 
         return view('customers-dashboard.graph', compact('suggestionsData'));
