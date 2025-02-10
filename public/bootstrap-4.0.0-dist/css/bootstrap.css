@@ -6388,9 +6388,9 @@ button.bg-dark:focus {
 }
 
 @media (min-width: 768px) {
-  .d-md-none {
-    display: none !important;
-  }
+    .d-md-none {
+        display: none !important;
+    }
   .d-md-inline {
     display: inline !important;
   }
@@ -9059,6 +9059,10 @@ a.text-dark:hover, a.text-dark:focus {
     text-overflow: ellipsis; /* Adds an ellipsis when the text is too long */
     max-width: 150px; /* Set max width for table cells (adjust as needed) */
 }
+.custom-ellipsis-nav {
+    white-space: nowrap; /* Prevents text from wrapping */
+    margin:20px;
+}
 
 .custom-ellipsis-small {
     white-space: nowrap; /* Prevents text from wrapping */
@@ -9109,42 +9113,54 @@ td, th {
     border-radius: 0.25rem !important;
 }
 
+.responsive-element {
+    display: flex;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
 
 @media (min-width: 769px) {
     .custom-self-center {
         align-self: center !important;
     }
+
 }
 
-@media (max-width: 768px) {
+    @media (max-width: 768px) {
 
-    /* Move the buttons column to the first position */
-    .reorder-buttons {
-        order: -1;
-        max-width:10px;
-    }
-    .custom-ellipsis {
-        max-width: 80px;
-    }
-    .button-icon {
-        width: 16px;
-        height: 16px;
-    }
+        /* Move the buttons column to the first position */
+        .reorder-buttons {
+            order: -1;
+            max-width: 10px;
+        }
 
-    .form-row {
-        display: flex;
-        flex-direction: column;
-    }
+        .custom-ellipsis {
+            max-width: 80px;
+        }
 
-    .form-row .col {
-        width: 100%; /* Full width on small screens */
-    }
+        .button-icon {
+            width: 16px;
+            height: 16px;
+        }
 
-    .custom-ellipsis-small {
-        white-space: nowrap; /* Prevents text from wrapping */
-        overflow: hidden; /* Hides the text that overflows */
-        text-overflow: ellipsis; /* Adds an ellipsis when the text is too long */
-        max-width: 150px; /* Set max width for table cells (adjust as needed) */
+        .form-row {
+            display: flex;
+            flex-direction: column;
+        }
+
+            .form-row .col {
+                width: 100%; /* Full width on small screens */
+            }
+
+        .custom-ellipsis-small {
+            white-space: nowrap; /* Prevents text from wrapping */
+            overflow: hidden; /* Hides the text that overflows */
+            text-overflow: ellipsis; /* Adds an ellipsis when the text is too long */
+            max-width: 150px; /* Set max width for table cells (adjust as needed) */
+        }
     }
-}
-/*# sourceMappingURL=bootstrap.css.map */
+    /*# sourceMappingURL=bootstrap.css.map */

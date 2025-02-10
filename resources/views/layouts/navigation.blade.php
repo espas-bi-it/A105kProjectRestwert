@@ -22,6 +22,7 @@
                     <x-nav-link :href="url('/graph')">
                         {{ __('buttons.statistic') }}
                     </x-nav-link>
+
                 </div>
             </div>
 
@@ -90,6 +91,12 @@
             <x-responsive-nav-link :href="url('/')">
                {{ __('buttons.new_customer') }}
             </x-responsive-nav-link>
+            @if(Auth::user()->hasAdvancedPermissions())
+                <!-- Benutzer verwalten -->
+                <x-responsive-nav-link :href="url('/users/index')">
+                    {{ __('buttons.edit_user') }}
+                </x-responsive-nav-link>
+            @endif
             <x-responsive-nav-link :href="url('/graph')">
                 {{ __('buttons.statistic') }}
             </x-responsive-nav-link>
