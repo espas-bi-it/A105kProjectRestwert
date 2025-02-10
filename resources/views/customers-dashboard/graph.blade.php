@@ -7,7 +7,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <div style="width: 80%; margin: auto; padding: 50px">
+    <div style="min-width: 80%; margin: auto; padding: 50px">
         <canvas id="suggestionsChart"></canvas>
     </div>
 
