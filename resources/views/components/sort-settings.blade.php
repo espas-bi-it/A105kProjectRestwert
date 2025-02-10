@@ -1,6 +1,6 @@
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav mr-auto">
             <form class="custom-self-center mr-sm-3  my-2 my-lg-0 p-1" action="{{ route('users.create') }}">
                 <input class="btn btn-primary" type="submit" value="{{__('buttons.create_user')}}"/>
             </form>
@@ -22,6 +22,4 @@
                 <button class="btn btn-outline-success align-baseline" type="submit" name="search">{{ __('buttons.search') }}</button>
             </form>
         </ul>
-
-
     </nav>
