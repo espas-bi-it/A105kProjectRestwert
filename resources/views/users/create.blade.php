@@ -12,7 +12,7 @@
          @csrf
             <div class="container">
                     <div class="form-row">
-                        <div class="col">
+                        <div class="col-12 ">
                             <label for="name"> {{ __('fields.name') }}</label>
                             <input class="form-control" name="name" id="name" required>
                             <label for="email">{{ __('fields.email') }}</label>
@@ -30,10 +30,10 @@
                         </div>
                     </div>
                     <div class="form-row pt-3 pb-3">
-                        <div class="col">
+                        <div class="col-12 col-md-6">
                             <button class="btn btn-primary"  type="submit">{{ __('buttons.create_user') }}</button>
                         </div>
-                        <div class="col">
+                        <div class="col-12 col-md-6">
 
                         </div>
                     </div>

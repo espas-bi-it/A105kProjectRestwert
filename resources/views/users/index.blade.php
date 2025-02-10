@@ -3,31 +3,31 @@
 <div class="navbar-sticky-item">
     @include('components.sort-settings')
 </div>
-<div class="container">
-    @if(session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
+@if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif    
+<div class="table-responsive">
     <table class="table">
         <thead>
             <tr>
-                <th class="col-5">{{ __('fields.user_name') }}</th>
-                <th class="col-5">{{ __('fields.email') }}</th>
-                <th class="col-1">{{ __('fields.role') }}</th>
-                <th></th>
+                <th  >{{ __('fields.user_name') }}</th>
+                <th >{{ __('fields.email') }}</th>
+                <th >{{ __('fields.role') }}</th>
+                <th class="reorder-buttons col-1">{{ __('fields.actions') }}</th>
             </tr>
         </thead>
         <tbody>
-            @foreach($users as $user)
-                @if ($user->email !== Auth::user()->email)
+        @foreach    ($users as $user)
+            @if     ($user->email !== Auth::user()->email)
                 <tr>
-                    <td class="align-middle custom-ellipsis">{{ $user->name }}</td>
-                    <td class="align-middle custom-ellipsis">{{ $user->email }}</td>
-                    <td class="align-middle custom-ellipsis">{{ $user->role }}</td>
-                    <td class="align-middle">
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            @if(Auth::user()->hasAdminPermissions() || $user->role != 'Admin')
+                    <td class="align-middle custom-ellipsis-small ">{{ $user->name }}</td>
+                    <td class="align-middle custom-ellipsis-small ">{{ $user->email }}</td>
+                    <td class="align-middle custom-ellipsis-small">{{ $user->role }}</td>
+                    <td class="align-middle custom-ellipsis-small col-1 reorder-buttons">
+                        <div class="action-buttons">
+                        @if    (Auth::user()->hasAdminPermissions() || $user->role != 'Admin')
                             <!-- Edit Button -->    
                             <a href="{{ url('users', ['id' => $user->id]) }}" title="{{ __('buttons.edit') }}">
                                 <img src="{{ asset('image/edit.png') }}" alt="{{ __('buttons.edit') }}" class="button-icon">
@@ -37,14 +37,14 @@
                             </button>
                                 <!-- Delete Button -->
                             <form id="delete-form-{{ $user->id }}" action="{{ route('users.destroy', $user->id) }}" method="POST">
-                                @csrf
+                            @csrf    
                             </form>
-                          @endif
+                        @endif    
                         </div>
                     </td>
                 </tr>
-                @endif
-            @endforeach
+            @endif    
+        @endforeach
         </tbody>
     </table>
 </div>

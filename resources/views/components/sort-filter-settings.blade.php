@@ -15,7 +15,7 @@
         </ul>
         <ul>
             <form method="GET" class="form-inline my-2 my-lg-0" role="search">
-                <input class="form-control mr-sm-2" type="search"
+                <input class="form-control mr-sm-2 custom-field" type="search"
                     value="{{ isset($_GET['search_input']) ? $_GET['search_input'] : '' }}" aria-label="Search"
                     name="search_input">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="search">{{ __('buttons.search') }}</button>

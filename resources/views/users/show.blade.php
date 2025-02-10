@@ -11,17 +11,17 @@
     @csrf
     <div class="container mt-3">
         <div class="form-row">
-            <div class="col">
+            <div class="col-12 col-md-6">
                 <label for="name"> {{ __('fields.name') }}*</label>
                 <input id="name" name="name" class="form-control" value="{{ $user->name }}">
             </div>
         </div>
         <div class="form-row">
-            <div class="col">
+            <div class="col-12 col-md-6">
                 <label for="email"> {{ __('fields.email') }}*</label>
                 <input id="email" name="email" class="form-control" value="{{ $user->email }}">
             </div>
-            <div class="col">
+            <div class="col-12 col-md-6">
                 <label for="role"> {{ __('fields.role') }}*</label>
                 <select id="role" name="role" class="form-control">
                     @if(Auth::user()->hasAdminPermissions()))
