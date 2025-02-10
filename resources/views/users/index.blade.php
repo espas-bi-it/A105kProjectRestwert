@@ -30,10 +30,10 @@
                             @if(Auth::user()->hasAdminPermissions() || $user->role != 'Admin')
                             <!-- Edit Button -->    
                             <a href="{{ url('users', ['id' => $user->id]) }}" title="{{ __('buttons.edit') }}">
-                                <img src="{{ asset('image/edit.png') }}" alt="{{ __('buttons.edit') }}" class="icon-img">
+                                <img src="{{ asset('image/edit.png') }}" alt="{{ __('buttons.edit') }}" class="button-icon">
                             </a>
                             <button form="delete-form-{{ $user->id }}" type="button" data-user-id="{{ $user->id }}" class="open-modal" style="border: none; background: none;" title="{{ __('buttons.delete') }}">
-                                <img src="{{ asset('image/delete.png') }}" alt="{{ __('buttons.delete') }}" class="icon-img">
+                                <img src="{{ asset('image/delete.png') }}" alt="{{ __('buttons.delete') }}" class="button-icon">
                             </button>
                                 <!-- Delete Button -->
                             <form id="delete-form-{{ $user->id }}" action="{{ route('users.destroy', $user->id) }}" method="POST">

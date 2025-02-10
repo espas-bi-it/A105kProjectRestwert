@@ -15,57 +15,55 @@
             {{ $error }}
         @endforeach
     </div>
-@endif
-<table class="table">
-    <thead>
-        <tr>
-            <!-- Table Headers -->
-            <th class="col-1">{{ __('fields.incorporated') }}</th>
-            <th class="col-1">{{ __('fields.name') }}</th>
-            <th class="col-1">{{ __('fields.surname') }}</th>
-            <th class="col-2">{{ __('fields.address') }}</th>
-            <th class="col-1">{{ __('fields.zip') }}</th>
-            <th class="col-1">{{ __('fields.city') }}</th>
-            <th class="col-2">{{ __('fields.email') }}</th>
-            <th class="col-2">{{ __('fields.date') }}</th>
-            <th class="col-1"></th>
-        </tr>
-    </thead>
-    <tbody>
-    <!-- Table Entries -->
-    @foreach ($customers as $customer)
-        <tr>
-            <td class="align-middle custom-ellipsis">{{ $customer->incorporated == 0 ? __('fields.no') : __('fields.yes') }}</td>
-            <td class="align-middle custom-ellipsis">{{ $customer->name }}</td>
-            <td class="align-middle custom-ellipsis">{{ $customer->surname }}</td>
-            <td class="align-middle custom-ellipsis">{{ $customer->address }}</td>
-            <td class="align-middle custom-ellipsis">{{ $customer->zip }}</td>
-            <td class="align-middle custom-ellipsis">{{ $customer->city }}</td>
-            <td class="align-middle custom-ellipsis">{{ $customer->email }}</td>
-            <td class="align-middle custom-ellipsis">{{ $customer->created_at->format('d. M. Y') }}</td>
-            <td class="align-middle custom-ellipsis">
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <!-- Edit Button -->
-                    <a href="{{ url('customers', ['id' => $customer->id]) }}">
-                        <img src="{{ asset('image/edit.png') }}" alt="{{ __('buttons.edit') }}" class="icon-img" title="{{ __('buttons.edit') }}">
-                    </a>
-                @if(Auth::user()->hasAdminPermissions())
-                    <!-- Delete Button -->
-                    <button form="delete-form-{{ $customer->id }}" type="button" data-user-id="{{ $customer->id }}" class="open-modal" style="border: none; background: none;" title="{{ __('buttons.delete') }}">
-                        <img src="{{ asset('image/delete.png') }}" alt="{{ __('buttons.delete') }}" class="icon-img">
-                    </button>
-                    <!-- Delete Form -->
-                    <form id="delete-form-{{ $customer->id }}" action="{{ url('customers', ['id' => $customer->id]) }}" method="POST">
-                    @method    ('DELETE')
-                    @csrf    
-                    </form>
-                @endif    
-                </div>
-            </td>
-        </tr>
+@endif    
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="reorder-buttons">{{ __('fields.actions') }}</th>
+                <th>{{ __('fields.incorporated') }}</th>
+                <th>{{ __('fields.name') }}</th>
+                <th>{{ __('fields.surname') }}</th>
+                <th>{{ __('fields.address') }}</th>
+                <th>{{ __('fields.zip') }}</th>
+                <th>{{ __('fields.city') }}</th>
+                <th>{{ __('fields.email') }}</th>
+                <th>{{ __('fields.created_at') }}</th>
+            </tr>
+        </thead>
+        <tbody>
+        <!-- Table Entries -->
+    @foreach     ($customers as $customer)
+            <tr>
+                <td class="align-middle custom-ellipsis reorder-buttons"> 
+                    <div class="action-buttons">
+                        <a href="{{ url('customers', ['id' => $customer->id]) }}">
+                            <img src="{{ asset('image/edit.png') }}" alt="{{ __('buttons.edit') }}" class="button-icon" title="{{ __('buttons.edit') }}">
+                        </a>
+                        @if(Auth::user()->hasAdminPermissions())
+                            <button form="delete-form-{{ $customer->id }}" type="button" data-user-id="{{ $customer->id }}" class="open-modal" title="{{ __('buttons.delete') }}">
+                                <img src="{{ asset('image/delete.png') }}" alt="{{ __('buttons.delete') }}" class="button-icon">
+                            </button>
+                            <form id="delete-form-{{ $customer->id }}" action="{{ url('customers', ['id' => $customer->id]) }}" method="POST">
+                                @method('DELETE')
+                                @csrf    
+                            </form>
+                        @endif    
+                    </div>
+                </td>
+                <td class="align-middle custom-ellipsis">{{ $customer->incorporated == 0 ? __('fields.no') : __('fields.yes') }}</td>
+                <td class="align-middle custom-ellipsis">{{ $customer->name }}</td>
+                <td class="align-middle custom-ellipsis">{{ $customer->surname }}</td>
+                <td class="align-middle custom-ellipsis">{{ $customer->address }}</td>
+                <td class="align-middle custom-ellipsis">{{ $customer->zip }}</td>
+                <td class="align-middle custom-ellipsis">{{ $customer->city }}</td>
+                <td class="align-middle custom-ellipsis">{{ $customer->email }}</td>
+                <td class="align-middle custom-ellipsis">{{ $customer->created_at->format('d. M. Y') }}</td>
+            </tr>
     @endforeach
-    </tbody>
-</table>
+        </tbody>
+    </table>
+</div>
 
 <!-- Modal -->
 <div id="overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 1050;">

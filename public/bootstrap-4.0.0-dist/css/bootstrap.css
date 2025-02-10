@@ -9053,10 +9053,62 @@ a.text-dark:hover, a.text-dark:focus {
     font-size: 1.5rem;
     cursor: pointer;
 }
+
 .custom-ellipsis {
     white-space: nowrap; /* Prevents text from wrapping */
     overflow: hidden; /* Hides the text that overflows */
     text-overflow: ellipsis; /* Adds an ellipsis when the text is too long */
     max-width: 150px; /* Set max width for table cells (adjust as needed) */
+}
+
+.table-responsive {
+    overflow-x: auto;
+    width: 100%;
+}
+
+/* Make action buttons flexible and non-collapsible */
+.action-buttons {
+    display: flex;
+    gap: 5px; /* Space between icons */
+}
+
+.button-icon {
+    width: 20px; /* Adjust size */
+    height: 20px;
+}
+
+.reorder-buttons {
+    order: 9;
+}
+
+tbody tr {
+    display: flex;
+}
+
+thead tr {
+    display: flex;
+}
+
+/* Keep other columns in normal order */
+td, th {
+    flex: 1;
+    min-width: 100px;
+    text-align: left;
+}
+
+@media (max-width: 768px) {
+
+    /* Move the buttons column to the first position */
+    .reorder-buttons {
+        order: -1;
+        max-width:10px;
+    }
+    .custom-ellipsis {
+        max-width: 80px;
+    }
+    .button-icon {
+        width: 16px;
+        height: 16px;
+    }
 }
 /*# sourceMappingURL=bootstrap.css.map */

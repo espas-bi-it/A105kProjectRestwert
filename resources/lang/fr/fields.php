@@ -36,6 +36,8 @@ return [
     'english' => 'Anglais',
     'french' => 'Français',
     'created_at' => 'Date',
+    'actions' => 'Action',
+
 
     // customer index localization
     'date' => 'Date',
