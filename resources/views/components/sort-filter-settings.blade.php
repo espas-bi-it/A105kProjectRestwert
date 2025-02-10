@@ -8,6 +8,7 @@
                     <option value="name">{{ __('fields.name') }}</option>
                     <option value="surname">{{ __('fields.surname') }}</option>
                     <option value="city">{{ __('fields.city') }}</option>
+                    <option value="created_at">{{ __('fields.created_at') }}</option>
                 </select>
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="filter-btn">{{ __('buttons.sort') }}</button>
             </form>
