@@ -9,4 +9,6 @@ return [
     'thankyou2' => 'As soon as your product is listed, you will receive an email with the details and the link to the Ricardo advertisement.',
     'thankyou3' => 'We thank you for your trust and hope to see you again soon!',
     'best_regards' => 'Best regards,',
+    'email_subject' => 'Thank you for your sign up',
+
 ];

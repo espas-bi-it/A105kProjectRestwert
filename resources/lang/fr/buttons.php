@@ -17,6 +17,7 @@ return [
     'customer_confirm_text' => 'Êtes-vous sûr de vouloir supprimer ce client ? Cette entrée est déplacée dans les archives.',
     'cancel' => 'Annuler',
     'create_user' => 'Créer un utilisateur',
+    'submit' => 'Veuillez patienter...',
 
     'admin' => 'Admin',
     'participant' => 'Participant',

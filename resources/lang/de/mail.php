@@ -9,4 +9,5 @@ return [
     'thankyou2' => 'Sobald Ihr Produkt aufgeschalten wird, erhalten Sie eine Email mit den Angaben und dem Link zum Ricardo-Inserat.',
     'thankyou3' => 'Wir danken Ihnen für Ihr Vertrauen und hoffen, Sie bald wieder zu sehen!',
     'best_regards' => 'Freundliche Grüsse',
+    'email_subject' => 'Vielen dank für Ihre Anmeldung',
 ];

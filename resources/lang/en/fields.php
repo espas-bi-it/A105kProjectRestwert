@@ -3,14 +3,14 @@
 return [
     // EN Form localization
     'title' => 'Title',
-    'female' => 'Mrs.',
+    'female' => 'Ms.',
     'male' => 'Mr.',
     'company' => 'Company',
     'name' => 'Name',
     'surname' => 'Surname',
     'address' => 'Address',
     'po_box' => 'PO Box',
-    'zip' => 'Zip',
+    'zip' => 'Zip Code',
     'city' => 'City',
     'email' => 'E-Mail',
     'phone' => 'Phone',
@@ -22,9 +22,9 @@ return [
     'flyer_suggestion' => 'Flyer',
     'graph_text' => 'Number of customers with these criteria',
     'incorporated' => 'Incorporated',
-    'alternative_input' => 'Alternative Data',
+    'alternative_input' => 'Alternative address',
     'suggestion_text' => 'How did you learn about us?',
-    'tos' => 'ToS',
+    'tos' => 'GTC',
     'tos_text' => 'You hereby confirm the accuracy of your details and accept our terms and conditions, which you will
                     receive again by e-mail after registration. Your details will not be passed on to third parties. Your e-mail address
                     may be used for information purposes in the event of changes to our terms and conditions or services. ',
@@ -36,7 +36,6 @@ return [
     'english' => 'English',
     'french' => 'French',
     'created_at' => 'Date',
-
 
     // customer index localization
     'date' => 'Date',

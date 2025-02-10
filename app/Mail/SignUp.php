@@ -39,8 +39,8 @@ class SignUp extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Vielen Dank für Ihre Anmeldung',
-            from: new Address('zuerich@projekt-restwert.ch', 'Anmeldung und AGBs'),
+            subject: __('mail.email_subject'),
+            from: new Address('zuerich@projekt-restwert.ch', 'Projekt Restwert'),
         );
     }
 

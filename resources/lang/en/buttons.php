@@ -17,6 +17,8 @@ return [
     'customer_confirm_text' => 'Are you sure you want to delete this customer? This entry will be moved to the archive.',
     'cancel' => 'Cancel',
     'create_user' => 'Create User',
+    'submit' => 'Please wait...',
+
 
     'admin' => 'Admin',
     'participant' => 'Participant',

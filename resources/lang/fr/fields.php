@@ -26,7 +26,7 @@ return [
     'suggestion_text' => 'Comment avez-vous entendu parler de nous?',
     'tos' => 'Conditions générales',
     'tos_text' => 'Par la présente, vous confirmez l\'exactitude de vos données et acceptez nos conditions générales, que vous recevrez à nouveau par e-mail après votre inscription.
-                    par e-mail après l\'inscription. Vos données ne seront pas transmises à des tiers. Votre adresse e-mail
+                    Vos données ne seront pas transmises à des tiers. Votre adresse e-mail
                     peut être utilisée à des fins d\'information en cas de modification de nos conditions générales ou de nos services. ',
     'submit' => 'Envoyer',
     'field_required' => '* Tous les champs doivent être remplis',

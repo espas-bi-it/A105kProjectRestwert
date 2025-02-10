@@ -241,7 +241,7 @@
                 document.getElementById('submitBtn').disabled = true;
         
                 // Optionally, change the button text to indicate it's processing
-                document.getElementById('submitBtn').innerText= "Wird bearbeitet...";
+                document.getElementById('submitBtn').innerText=  "{{ __('buttons.submit') }}";
 
                 // Return true to allow the form to be submitted
                 return true;

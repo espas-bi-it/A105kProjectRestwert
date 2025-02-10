@@ -17,6 +17,7 @@ return [
     'customer_confirm_text' => 'Sind Sie sicher, dass Sie diesen Kunden löschen möchten? Dieser Eintrag wird ins Archiv verschoben.',
     'cancel' => 'Abbrechen',
     'create_user' => 'Benutzer erstellen',
+    'submit' => 'Bitte warten...',
 
     'admin' => 'Admin',
     'participant' => 'Teilnehmer',
