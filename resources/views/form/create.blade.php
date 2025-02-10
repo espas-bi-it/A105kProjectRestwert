@@ -116,7 +116,7 @@
 
                 <!-- Checkbox to toggle alternative data -->
                 <div class="form-check mt-3">
-                    <input type="checkbox" class="form-check-input" id="alt_form_check" name="alt_form_check"
+                    <input type="checkbox" class="form-check-input custom-field" id="alt_form_check" name="alt_form_check"
                         onchange="HideInputFields()" {{ old('alt_form_check') ? 'checked' : '' }}>
                     <label class="form-check-label" for="alt_form_check">{{ __('fields.alternative_input') }} </label>
                 </div>
@@ -181,26 +181,26 @@
                 </div>
                 <div class="form-check">
                     <!-- Mündliche Empfehlung -->
-                   <input class="form-check-input" type="checkbox" name="oral_suggestion" id="oral_suggestion"
+                   <input class="form-check-input custom-field" type="checkbox" name="oral_suggestion" id="oral_suggestion"
                         value="1" {{ old('oral_suggestion') ? 'checked' : '' }}>
                     <label class="form-check-label" for="oral_suggestion"> {{ __('fields.oral_suggestion') }}</label>
                 </div>
                 <div class="form-check">
                     <!-- Ricardo -->
-                   <input class="form-check-input" type="checkbox" name="ricardo_suggestion" id="ricardo_suggestion"
+                   <input class="form-check-input custom-field" type="checkbox" name="ricardo_suggestion" id="ricardo_suggestion"
                         value="1" {{ old('ricardo_suggestion') ? 'checked' : '' }}>
                     <label class="form-check-label" for="ricardo_suggestion"> {{ __('fields.ricardo_suggestion') }}</label>
 
                 </div>
                 <div class="form-check">
                     <!-- Social Media -->
-                   <input class="form-check-input" type="checkbox" name="socialmedia_suggestion" id="socialmedia_suggestion"
+                   <input class="form-check-input custom-field" type="checkbox" name="socialmedia_suggestion" id="socialmedia_suggestion"
                         value="1" {{ old('socialmedia_suggestion') ? 'checked' : '' }}>
                     <label class="form-check-label" for="socialmedia_suggestion"> {{ __('fields.socialmedia_suggestion') }}</label>
                 </div>
                 <div class="form-check">
                     <!-- Flyer -->
-                   <input class="form-check-input" type="checkbox" name="flyer_suggestion" id="flyer_suggestion"
+                   <input class="form-check-input custom-field" type="checkbox" name="flyer_suggestion" id="flyer_suggestion"
                         value="1" {{ old('flyer_suggestion') ? 'checked' : '' }}>
                     <label class="form-check-label" for="flyer_suggestion"> {{ __('fields.flyer_suggestion') }}</label>
                 </div>
@@ -209,7 +209,7 @@
 
                 <div class="form-group mt-3">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="gridCheck" required>
+                        <input class="form-check-input custom-field" type="checkbox" id="gridCheck" required>
                         <label class="form-check-label" for="gridCheck">
                         <!-- AGBs und Text -->
                             {{ __('fields.tos') }}*
